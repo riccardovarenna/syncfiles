@@ -166,6 +166,7 @@ map <leader>dt :put=strftime('%Y/%m/%d %a %H:%M')<CR>
 " ========= instant markdown =========
 "if things don't work, use :InstantMarkdownStop and try again
 map <leader>md :InstantMarkdownPreview<CR>
+map <leader>ms :InstantMarkdownStop<CR>
 let g:instant_markdown_autostart = 0
 
 " ========= vimwiki =========
