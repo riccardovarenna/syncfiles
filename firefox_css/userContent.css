@@ -1,0 +1,16 @@
+/* Removes white loading page */
+
+@-moz-document url(about:blank), url(about:newtab), url(about:home) {
+    html:not(#ublock0-epicker), html:not(#ublock0-epicker) body, #newtab-customize-overlay {
+      background: #1d2021 !important;
+    }
+  }
+  
+
+:root {
+  /* horizontal scrollbars in websites are not thin, just take the color
+	--color-fg   : #e4a857;
+	--color-bg   : #282a36;
+	scrollbar-color: var(--color-fg) var(--color-bg) !important; */
+  scrollbar-width: thin !important;
+}

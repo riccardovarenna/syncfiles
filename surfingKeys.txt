@@ -1,0 +1,10 @@
+map("K", "R");
+map("J", "E");
+map(">_F", "F");
+map("F", "C");
+settings.smoothScroll = false;
+Hints.characters = 'asdfgwerzxcv';
+settings.hintAlign = "left";
+
+// only keep tab navigation for calendar & email
+// unmapAllExcept(['J','K','t'], /mail.google.com|drive.google.com|slack.com/);

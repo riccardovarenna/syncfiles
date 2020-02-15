@@ -1,0 +1,75 @@
+source ~/.vimrc
+
+" ===== setup =====
+" Powerline setup
+"set guifont=Hack\ 11
+
+" Always show statusline
+set showmode
+set multiple-cursors
+set surround
+set is
+set ic
+set scs
+let mapleader = " "
+set ttimeout
+set timeoutlen=3000  " Time to wait for a command (after leader for example).
+set ttimeoutlen=100 " Time to wait for a key sequence.
+
+" ===== keymaps =====
+
+"***go***
+map gu :action FindUsages<CR>
+map gi :action ReSharperGotoImplementation<CR>
+map gb :action Back<CR>
+map gf :action Forward<CR>
+map gc :action CommentByLineComment<cr>
+map gh :action ShowErrorDescription<cr>
+
+
+"***search***
+map <leader>/ :action FindInPath<cr>
+map <leader>ps :action GotoSymbol<cr>
+map <leader>pa :action GotoAction<cr>
+map <leader>pf :action GotoFile<cr>
+noremap <leader>pr :action RecentChangedFiles<CR>
+noremap <leader>ph :action ReplaceInPath<CR>
+
+"***kjump***
+map <leader>j :action KJumpAction<CR>
+
+"***folding***
+map <leader>fh :action CollapseRegionRecursively<cr>
+map <leader>fl :action ExpandRegionRecursively<cr>
+map <leader>fc :action CollapseAllRegions<cr>
+map <leader>fe :action ExpandAllRegions<cr>
+
+"***cursor***
+map <C-n> :action SelectNextOccurrence<cr>
+map <leader>ca :action SelectAllOccurrences<cr>
+map <leader>cu :action UnselectPreviousOccurrence<cr>
+
+"***window actions***
+map <leader>wh :action PrevSplitter<cr>
+map <leader>wl :action NextSplitter<cr>
+map <leader>wo :action UnsplitAll<cr> <bar> :action CloseAllEditorsButActive<cr>  
+map <leader>to :action CloseAllEditorsButActive<cr>
+map <leader>ws :action SplitVertically<cr>
+map <leader>wu :action ReopenClosedTab<cr>
+
+"***git version control***
+noremap <leader>en :action GotoNextError<CR>
+noremap <leader>ep :action GotoPreviousError<CR>
+
+noremap <leader>gl :action Vcs.Show.Log<CR>
+noremap <leader>gsc :action Vcs.Show.Local.Changes<CR>
+map <leader>gb :action Git.Branches<cr>
+map <leader>gcb :action Git.CompareWithBranch<cr>
+map <leader>ga :action Annotate<cr>
+map <leader>grc :action Git.ResolveConflicts<cr>
+
+"***file changes
+map <leader>fs :action SaveAll<cr>
+map <leader>ev :action Tool_External Tools_gvim<cr>
+map <leader>ec :action Tool_External Tools_vscode<cr>
+vmap = :action ReformatCode<cr>
