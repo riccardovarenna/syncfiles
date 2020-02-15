@@ -1,8 +1,8 @@
 # How this repo was set up
 1. copy all your dotfiles from the root to your dotfile folder in the git repo
-    mv ~/dotfilename ~\syncfiles\dotfiles\dotfilename
+> mv ~/dotfilename ~\syncfiles\dotfiles\dotfilename
 2. create hardlinks to those dotfiles like this
-    mklink /H ~/dotfilename ~\syncfiles\dotfiles\dotfilename
+> mklink /H ~/dotfilename ~\syncfiles\dotfiles\dotfilename
 
 # How Firefox customization was done
 
