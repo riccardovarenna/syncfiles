@@ -91,10 +91,13 @@ map <leader>fn :vert new<CR>
 map <leader>vn :!start gvim<CR>
 
 "pot -> potentials
-map <leader>poti :e ~/vimwiki/potentialIndex.md<CR>
+map <leader>poti :e ~/vimwiki/potential_index.md<CR>
 map <leader>potf :cd ~/vimwiki/potentials/<CR>:Ag<SPACE>
 
-map <leader>bu :e ~/vimwiki/bachirUpdate<CR>
+map <leader>bu :e ~/vimwiki/bachir_update.md<CR>
+
+"source vimrc
+map <leader>svrc :source ~/.vimrc<CR>
 
 
 " ========= COLORS AND FONTS FOR VIM THEME =========
@@ -105,6 +108,7 @@ colorscheme gruvbox
 
 " ========= starting window size =========
 set lines=40 columns=130
+:winpos 735 400
 
 
 " ========= goyo =========
@@ -177,7 +181,8 @@ let g:instant_markdown_autostart = 0
 
 nmap <leader>vwh <Plug>Vimwiki2HTML
 nmap <leader>vws <Plug>VimwikiUISelect
-nmap <Leader>wT <Plug>VimwikiTabIndex
+nmap <leader>wti <Plug>VimwikiTabIndex
+nmap <leader>wn <Plug>VimwikiNextLink
 
 let g:vimwiki_list = [{
             \'path': '~/vimwiki/',
