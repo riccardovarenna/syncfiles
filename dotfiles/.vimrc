@@ -47,17 +47,17 @@ let mapleader = " "
 set ttimeout
 set timeoutlen=3000  " Time to wait for a command (after leader for example).
 set ttimeoutlen=100 " Time to wait for a key sequence.
-set nocompatible
+set nocompatible "no compatible with Vi enables other options
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
-set expandtab
-set linebreak
+set expandtab "expands tab to tabstop spaces
+set linebreak "wrap whole words instead of splitting them in the middle
 set guifont=Consolas:h11
 syntax on
 set encoding=utf-8
-set autochdir
-set pythonthreedll=python37.dll
+set autochdir "when changing files also change current directory
+set pythonthreedll=python37.dll "use this python version
 set splitright
 set splitbelow
 " Disables automatic commenting on newline:
@@ -111,7 +111,7 @@ set lines=40 columns=130
 map <leader>gy :Goyo<CR>
 
 " ========= nerdtree =========
-set guioptions-=L
+set guioptions-=L "no vertical scrollbar when window split
 function! NERDTreeToggleInCurDir()
   " If NERDTree is open in the current buffer
   if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
