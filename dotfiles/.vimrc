@@ -60,6 +60,13 @@ set autochdir "when changing files also change current directory
 set pythonthreedll=python37.dll "use this python version
 set splitright
 set splitbelow
+"don't loose selection when shifting
+xnoremap <  <gv
+xnoremap >  >gv
+"disable bells
+set noerrorbells
+set novisualbell
+
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 

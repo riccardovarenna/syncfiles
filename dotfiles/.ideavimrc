@@ -8,9 +8,9 @@ source ~/.vimrc
 set showmode
 set multiple-cursors
 set surround
-set is
-set ic
-set scs
+set is "incsearch
+set ic "ignorecase
+set scs "smartcase
 let mapleader = " "
 set ttimeout
 set timeoutlen=3000  " Time to wait for a command (after leader for example).
@@ -39,10 +39,12 @@ noremap <leader>ph :action ReplaceInPath<CR>
 map <leader>j :action KJumpAction<CR>
 
 "***folding***
-map <leader>fh :action CollapseRegionRecursively<cr>
-map <leader>fl :action ExpandRegionRecursively<cr>
-map <leader>fc :action CollapseAllRegions<cr>
-map <leader>fe :action ExpandAllRegions<cr>
+map zo :action ExpandRegion<cr>
+map zc :action CollapseRegion<cr>
+map zm :action CollapseRegionRecursively<cr>
+map zr :action ExpandRegionRecursively<cr>
+map zM :action CollapseAllRegions<cr>
+map zR :action ExpandAllRegions<cr>
 
 "***cursor***
 map <C-n> :action SelectNextOccurrence<cr>
