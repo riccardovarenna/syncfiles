@@ -73,7 +73,7 @@ alias note='trello add-card -b "Riccardo" -l "Inbox" $1 -p bottom' #using https:
 
 alias ydl="youtube-dl"
 alias ydlmp3="youtube-dl --extract-audio --audio-format mp3"
-alias potgen="cd ~/syncfiles/projects/potential_application/potential_application/bin/Release && ./potential_application.exe"
+alias potgen="cd ~/syncfiles/projects/generate_application_data/bin/Release && ./generate_application_data.exe"
 
 alias gettwitchid="~/syncfiles/twitch/get_user_id.sh"
 alias gettwitchdata="~/syncfiles/twitch/get_channel_data.sh"
