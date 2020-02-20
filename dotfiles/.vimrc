@@ -66,6 +66,9 @@ xnoremap >  >gv
 "disable bells
 set noerrorbells
 set novisualbell
+"shell
+set shell=powershell
+set shellcmdflag=-command
 
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -96,12 +99,6 @@ map <leader>j <Plug>(easymotion-s)
 map <leader>fn :vert new<CR>
 "vim new
 map <leader>vn :!start gvim<CR>
-
-"pot -> potentials
-map <leader>poti :e ~/vimwiki/potential_index.md<CR>
-map <leader>potf :cd ~/vimwiki/potentials/<CR>:Ag<SPACE>
-
-map <leader>bu :e ~/vimwiki/bachir_update.md<CR>
 
 "source vimrc
 map <leader>svrc :source ~/.vimrc<CR>
@@ -181,10 +178,10 @@ map <leader>ms :InstantMarkdownStop<CR>
 let g:instant_markdown_autostart = 0
 
 " ========= vimwiki =========
-" <Leader>w<Leader>i :VimwikiDiaryGenerateLinks
-"[[ :Go to the previous header in the buffer.
-"]] :Go to the next header in the buffer.
-":VimwikiTable cols rows :Create a table with the given cols and rows
+"pot -> potentials
+map <leader>poti :e ~/vimwiki/potential_index.md<CR>
+map <leader>potf :cd ~/vimwiki/potentials/<CR>:Ag<SPACE>
+map <leader>bu :e ~/vimwiki/bachir_update.md<CR>
 
 nmap <leader>vwh <Plug>Vimwiki2HTML
 nmap <leader>vws <Plug>VimwikiUISelect
@@ -201,21 +198,15 @@ let g:vimwiki_list = [{
             \'template_default': 'templates/def_template',
             \'template_ext': '.html',
             \'custom_wiki2html': 'vimwiki_markdown.py'}]
-"misaka_md2html.py
 
-
-"
 hi VimwikiHeaderChar guifg=#fe8019
-
 hi VimwikiHeader1 guifg=#fabd2d 
 hi VimwikiHeader2 guifg=#8ab461
 hi VimwikiHeader3 guifg=#52b3d3
 hi VimwikiHeader4 guifg=#dab1ff
-
 hi VimwikiLink guifg=#52b3d3
 hi VimwikiList guifg=#d8b0fd 
 hi VimwikiCode guifg=#8ab461
-
 
 let g:vimwiki_global_ext=0
 let g:vimwiki_folding='custom'
