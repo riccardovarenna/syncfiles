@@ -66,9 +66,6 @@ xnoremap >  >gv
 "disable bells
 set noerrorbells
 set novisualbell
-"shell
-set shell=powershell
-set shellcmdflag=-command
 
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -184,7 +181,7 @@ map <leader>potf :cd ~/vimwiki/potentials/<CR>:Ag<SPACE>
 map <leader>bu :e ~/vimwiki/bachir_update.md<CR>
 
 nmap <leader>vwh <Plug>Vimwiki2HTML
-nmap <leader>vws <Plug>VimwikiUISelect
+nmap <cader>vws <Plug>VimwikiUISelect
 nmap <leader>wti <Plug>VimwikiTabIndex
 nmap <leader>wn <Plug>VimwikiNextLink
 
