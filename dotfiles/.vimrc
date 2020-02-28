@@ -39,7 +39,7 @@ set clipboard=unnamed
 set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
-set scrolloff=3
+set scrolloff=1
 set ignorecase
 set smartcase
 set incsearch
@@ -81,6 +81,12 @@ map <leader>od :setlocal spell! spelllang=de<CR>
 
 
 " ========= navigation =========
+"Differs from 'j' when lines wrap, and when used with an operator, because it's not linewise.
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 map <leader>wh <C-w>h
 map <leader>wj <C-w>j
@@ -88,6 +94,9 @@ map <leader>wk <C-w>k
 map <leader>wl <C-w>l
 map <leader>ws :vsplit<CR>
 map <leader>wt <C-w>T
+
+nnoremap ]q :cnext<cr>
+nnoremap [q :cprev<cr>
 
 " jump to char
 map <leader>j <Plug>(easymotion-s)
@@ -181,7 +190,7 @@ map <leader>potf :cd ~/vimwiki/potentials/<CR>:Ag<SPACE>
 map <leader>bu :e ~/vimwiki/bachir_update.md<CR>
 
 nmap <leader>vwh <Plug>Vimwiki2HTML
-nmap <cader>vws <Plug>VimwikiUISelect
+nmap <leader>vws <Plug>VimwikiUISelect
 nmap <leader>wti <Plug>VimwikiTabIndex
 nmap <leader>wn <Plug>VimwikiNextLink
 
