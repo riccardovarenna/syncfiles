@@ -4,6 +4,7 @@
 ;; sync' after modifying this file!
 
 (map! :leader "SPC" #'execute-extended-command)
+(global-set-key (kbd "C-SPC") 'org-toggle-checkbox)
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
