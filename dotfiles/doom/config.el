@@ -5,6 +5,9 @@
 
 (map! :leader "SPC" #'execute-extended-command)
 (global-set-key (kbd "C-SPC") 'org-toggle-checkbox)
+(setq Info-directory-list
+      '("C:/Users/Riccardo/manuals"
+        "C:/ProgramData/chocolatey/lib/Emacs/tools/emacs/share/info"))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
