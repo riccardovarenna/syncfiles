@@ -15,6 +15,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
 call vundle#end()
 
 " Brief help
@@ -117,8 +118,8 @@ colorscheme gruvbox
 
 
 " ========= starting window size =========
-set lines=40 columns=130
-:winpos 735 400
+set lines=58 columns=118
+:winpos 1520 180
 
 
 " ========= goyo =========
@@ -141,11 +142,12 @@ endfunction
 nnoremap <leader>nt :call NERDTreeToggleInCurDir()<CR>
 
 
-" ========= FZF and search =========
-"project file
-map <leader>pf :Files<CR>
-map <leader>pb :Buffers<CR>
-map <leader>ph :History<CR>
+" ========= search =========
+map <leader>pf :CtrlP<CR>
+map <leader>pw :CtrlP ~/vimwiki/<CR>
+map <leader>b :CtrlPBuffer<CR>
+map <leader>pr :CtrlPMRU<CR>
+map <leader>ss :CtrlPLine<CR>
 map <leader>/ :Ag<SPACE>
 
 "vimrc
