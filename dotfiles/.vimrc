@@ -250,3 +250,4 @@ function! MarkdownFoldText()
   return getline(v:foldstart).' ('.foldsize.' lines)'
 endfunction
 set foldtext=MarkdownFoldText()
+map <Tab> za
