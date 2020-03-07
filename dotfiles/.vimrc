@@ -96,6 +96,7 @@ map <leader>wk <C-w>k
 map <leader>wl <C-w>l
 map <leader>ws :vsplit<CR>
 map <leader>wt <C-w>T
+map <leader><Tab> <C-^>
 
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprev<cr>
@@ -177,7 +178,7 @@ map <leader>fj :Autoformat json<CR>
 "format white space
 map <leader>fws :%s/\s\+$/<CR>
 "format empty lines
-map <leader>fel :g/^\s*$/d<CR>
+map <leader>fel :g/^$/d<CR>
 
 "datetime
 map <leader>dt :put=strftime('%Y/%m/%d %a %H:%M')<CR>
