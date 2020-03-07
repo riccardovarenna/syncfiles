@@ -70,12 +70,14 @@ set noerrorbells
 set novisualbell
 
 " Disables automatic commenting on newline:
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup format_options
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup END
 
 " ========= spellcheck =========
 " Spell-check set to <leader>o, 'o' for 'orthography':
-map <leader>oe :setlocal spell! spelllang=en_us<CR>
-map <leader>od :setlocal spell! spelllang=de<CR>
+noremap <leader>oe :setlocal spell! spelllang=en_us<CR>
+noremap <leader>od :setlocal spell! spelllang=de<CR>
 " z= to show suggestions; zg to mark word good; zw to mark word wrong
 " [s back to previous spelling mistake; ]s next spelling mistake
 "seplling on by default set spell spelllang=en_us
@@ -90,28 +92,34 @@ nnoremap gj j
 nnoremap gk k
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-map <leader>wh <C-w>h
-map <leader>wj <C-w>j
-map <leader>wk <C-w>k
-map <leader>wl <C-w>l
-map <leader>ws :vsplit<CR>
-map <leader>wt <C-w>T
-map <leader><Tab> <C-^>
+noremap <leader>wh <C-w>h
+noremap <leader>wj <C-w>j
+noremap <leader>wk <C-w>k
+noremap <leader>wl <C-w>l
+noremap <leader>ws :vsplit<CR>
+noremap <leader>wt <C-w>T
+noremap <leader><Tab> <C-^>
 
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprev<cr>
 
 " jump to char
-map <leader>j <Plug>(easymotion-s)
+noremap <leader>j <Plug>(easymotion-s)
 
 "file new
-map <leader>fn :vert new<CR>
+noremap <leader>fn :vert new<CR>
 "vim new
-map <leader>vn :!start gvim<CR>
+noremap <leader>vn :!start gvim<CR>
 
 "source vimrc
-map <leader>svrc :source ~/.vimrc<CR>
+noremap <leader>sv :source $MYVIMRC<CR>
 
+"vimrc
+noremap <leader>vrc :e $MYVIMRC<CR>
+"bashrc
+noremap <leader>brc :e ~/.bashrc<CR>
+"riderrc
+noremap <leader>rrc :e ~/.ideavimrc<CR>
 
 " ========= COLORS AND FONTS FOR VIM THEME =========
 set background=dark
@@ -125,7 +133,7 @@ set lines=58 columns=118
 
 
 " ========= goyo =========
-map <leader>gy :Goyo<CR>
+noremap <leader>gy :Goyo<CR>
 
 " ========= nerdtree =========
 set guioptions-=L "no vertical scrollbar when window split
@@ -145,22 +153,14 @@ nnoremap <leader>nt :call NERDTreeToggleInCurDir()<CR>
 
 
 " ========= search =========
-map <leader>pf :CtrlP<CR>
-map <leader>pw :CtrlP ~/vimwiki/<CR>
-map <leader>b :CtrlPBuffer<CR>
-map <leader>pr :CtrlPMRU<CR>
-map <leader>ss :CtrlPLine<CR>
-map <leader>/ :Ag<SPACE>
+noremap <leader>pf :CtrlP<CR>
+noremap <leader>pw :CtrlP ~/vimwiki/<CR>
+noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>pr :CtrlPMRU<CR>
+noremap <leader>ss :CtrlPLine<CR>
+noremap <leader>/ :Ag<SPACE>
 
 :nnoremap <silent> <ESC> :nohlsearch<Bar>:echo<CR>
-
-"vimrc
-map <leader>vrc :e $MYVIMRC<CR>
-"bashrc
-map <leader>brc :e ~/.bashrc<CR>
-"riderrc
-map <leader>rrc :e ~/.ideavimrc<CR>
-
 
 " ========= formatting =========
 function! FormatPurchaseLogs()
@@ -171,34 +171,34 @@ function! FormatPurchaseLogs()
     exe ":g/Payload/d"
 endfunction
 "purchase logs
-map <leader>purl :call FormatPurchaseLogs()<CR>
+noremap <leader>purl :call FormatPurchaseLogs()<CR>
 
 "format json
-map <leader>fj :Autoformat json<CR>
+noremap <leader>fj :Autoformat json<CR>
 "format white space
-map <leader>fws :%s/\s\+$/<CR>
+noremap <leader>fws :%s/\s\+$/<CR>
 "format empty lines
-map <leader>fel :g/^$/d<CR>
+noremap <leader>fel :g/^$/d<CR>
 
 "datetime
-map <leader>dt :put=strftime('%Y/%m/%d %a %H:%M')<CR>
+noremap <leader>dt :put=strftime('%Y/%m/%d %a %H:%M')<CR>
 
 " ========= instant markdown =========
 "if things don't work, use :InstantMarkdownStop and try again
-map <leader>md :InstantMarkdownPreview<CR>
-map <leader>ms :InstantMarkdownStop<CR>
+noremap <leader>md :InstantMarkdownPreview<CR>
+noremap <leader>ms :InstantMarkdownStop<CR>
 let g:instant_markdown_autostart = 0
 
 " ========= vimwiki =========
 "pot -> potentials
-map <leader>poti :e ~/vimwiki/potential_index.md<CR>
-map <leader>potf :cd ~/vimwiki/potentials/<CR>:Ag<SPACE>
-map <leader>bu :e ~/vimwiki/bachir_update.md<CR>
+noremap <leader>poti :e ~/vimwiki/potential_index.md<CR>
+noremap <leader>potf :cd ~/vimwiki/potentials/<CR>:Ag<SPACE>
+noremap <leader>bu :e ~/vimwiki/bachir_update.md<CR>
 
-nmap <leader>vwh <Plug>Vimwiki2HTML
-nmap <leader>vws <Plug>VimwikiUISelect
-nmap <leader>wti <Plug>VimwikiTabIndex
-nmap <leader>wn <Plug>VimwikiNextLink
+nnoremap <leader>vwh <Plug>Vimwiki2HTML
+nnoremap <leader>vws <Plug>VimwikiUISelect
+nnoremap <leader>wti <Plug>VimwikiTabIndex
+nnoremap <leader>wn <Plug>VimwikiNextLink
 
 let g:vimwiki_list = [{
             \'path': '~/vimwiki/',
@@ -250,4 +250,7 @@ function! MarkdownFoldText()
   return getline(v:foldstart).' ('.foldsize.' lines)'
 endfunction
 set foldtext=MarkdownFoldText()
-map <Tab> za
+noremap <Tab> za
+
+"========= abbreviations =========
+iabbrev simg ![skype_image](file:additionalInfo/)
