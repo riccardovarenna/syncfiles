@@ -43,6 +43,7 @@ set guioptions-=r  "scrollbar
 set scrolloff=1
 set ignorecase
 set smartcase
+set hlsearch
 set incsearch
 let mapleader = " "
 set ttimeout
@@ -149,6 +150,8 @@ map <leader>b :CtrlPBuffer<CR>
 map <leader>pr :CtrlPMRU<CR>
 map <leader>ss :CtrlPLine<CR>
 map <leader>/ :Ag<SPACE>
+
+:nnoremap <silent> <ESC> :nohlsearch<Bar>:echo<CR>
 
 "vimrc
 map <leader>vrc :e $MYVIMRC<CR>
