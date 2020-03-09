@@ -16,73 +16,119 @@ Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
+Plugin 'liuchengxu/vim-which-key'
 call vundle#end()
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-" :PluginUpdate     - updates all plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" ========= Airline Plugin Commands =========
-" ONLY WORKS IF YOU HAVE THE AIRLINE PLUGIN
-" statusline appear at all times
-"let g:airline_theme='minimalist'
-let g:airline#extensions#tabline#enabled = 1
-
-
-" ========= DEFAULTS =========
+" ========= defaults =========
 set clipboard=unnamed
-set guioptions-=m  "menu bar
-set guioptions-=T  "toolbar
-set guioptions-=r  "scrollbar
-set scrolloff=1
+let g:mapleader = "\<Space>"
+set ttimeout
+set timeoutlen=1500  " Time to wait for a command (after leader for example).
+set ttimeoutlen=100 " Time to wait for a key sequence.
 set ignorecase
 set smartcase
 set hlsearch
 set incsearch
-let mapleader = " "
-set ttimeout
-set timeoutlen=3000  " Time to wait for a command (after leader for example).
-set ttimeoutlen=100 " Time to wait for a key sequence.
-set nocompatible "no compatible with Vi enables other options
-filetype plugin indent on
+nnoremap <silent> <ESC> :nohlsearch<Bar>:echo<CR>
 set tabstop=4
 set shiftwidth=4
 set expandtab "expands tab to tabstop spaces
 set linebreak "wrap whole words instead of splitting them in the middle
-set guifont=Consolas:h11
+set nocompatible "no compatible with Vi enables other options
+filetype plugin indent on
 syntax on
 set encoding=utf-8
-set autochdir "when changing files also change current directory
 set pythonthreedll=python37.dll "use this python version
-set splitright
-set splitbelow
 "don't loose selection when shifting
 xnoremap <  <gv
 xnoremap >  >gv
 "disable bells
 set noerrorbells
 set novisualbell
-
 " Disables automatic commenting on newline:
 augroup format_options
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 
-" ========= spellcheck =========
-" Spell-check set to <leader>o, 'o' for 'orthography':
-noremap <leader>oe :setlocal spell! spelllang=en_us<CR>
-noremap <leader>od :setlocal spell! spelllang=de<CR>
-" z= to show suggestions; zg to mark word good; zw to mark word wrong
-" [s back to previous spelling mistake; ]s next spelling mistake
-"seplling on by default set spell spelllang=en_us
+" ========= which-key =========
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+let g:which_key_map = {}
 
+let g:which_key_map.b = {
+    \ 'name' : '+buffer',
+    \ 'l' : ['<C-^>', 'last buffer'],
+    \ }
 
+let g:which_key_map.f = {
+    \ 'name' : '+format',
+    \ 'e' : [':g/^$/d', 'empty lines'],
+    \ 'p' : [':call FormatPurchaseLogs()', 'purchase logs'],
+    \ 'j' : [':Autoformat json', 'json'],
+    \ 'w' : [':%s/\s\+$/', 'whitespace'],
+    \ }
+
+let g:which_key_map.i = {
+    \ 'name' : '+buffer',
+    \ 'd' : [':put=strftime('%Y/%m/%d %a %H:%M')', 'datetime'],
+    \ }
+
+let g:which_key_map.o = {
+    \ 'name' : '+open',
+    \ 'b' : [':e ~/.bashrc', 'bashrc'],
+    \ 'd' : [':setlocal spell! spelllang=de', 'deutsch spellcheck'],
+    \ 'e' : [':setlocal spell! spelllang=en_us', 'english spellcheck'],
+    \ 'f' : [':vert new', 'file'],
+    \ 'g' : [':Goyo', 'goyo'],
+    \ 'n' : [':call NERDTreeToggleInCurDir()', 'nerdtree'],
+    \ 'p' : [':e ~/vimwiki/potential_index.md', 'potentials'],
+    \ 'r' : [':e ~/.ideavimrc', 'rider'],
+    \ 'u' : [':e ~/vimwiki/bachir_update.md', 'bachir'],
+    \ 'v' : [':e $MYVIMRC', 'vimrc'],
+    \ 'w' : [':!start gvim', 'window'],
+    \ }
+
+let g:which_key_map.p = {
+    \ 'name' : '+project',
+    \ 'f' : [':CtrlP', 'files'],
+    \ 'w' : [':CtrlP ~/vimwiki/', 'vimwiki'],
+    \ 'b' : [':CtrlPBuffer', 'buffers'],
+    \ }
+
+let g:which_key_map.s = {
+    \ 'name' : '+search',
+    \ 'r' : [':CtrlPMRU', 'recent'],
+    \ 's' : [':CtrlPLine', 'swoop'],
+    \ 'v' : [':source $MYVIMRC', 'source vimrc'],
+    \ }
+
+let g:which_key_map.t = {
+    \ 'name' : '+toggle',
+    \ 'w' : [':set wrap!', 'wrap'],
+    \ }
+
+let g:which_key_map.w = {
+    \ 'name' : '+window',
+    \ 'h' : ['<C-w>h', 'left'],
+    \ 'j' : ['<C-w>j', 'down'],
+    \ 'k' : ['<C-w>k', 'up'],
+    \ 'l' : ['<C-w>l', 'right'],
+    \ 's' : ['vsplit', 'vsplit'],
+    \ 't' : ['<C-w>T', 'tabo'],
+    \ }
+
+noremap <leader>j <Plug>(easymotion-s)
+let g:which_key_map.j = { 'name' : 'jump' }
+
+nnoremap <leader>vwh <Plug>Vimwiki2HTML
+nnoremap <leader>vws <Plug>VimwikiUISelect
+nnoremap <leader>wti <Plug>VimwikiTabIndex
+nnoremap <leader>wn <Plug>VimwikiNextLink
+
+noremap <leader>/ :Ag<SPACE>
+
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 
 " ========= navigation =========
 "Differs from 'j' when lines wrap, and when used with an operator, because it's not linewise.
@@ -91,49 +137,29 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-noremap <leader>wh <C-w>h
-noremap <leader>wj <C-w>j
-noremap <leader>wk <C-w>k
-noremap <leader>wl <C-w>l
-noremap <leader>ws :vsplit<CR>
-noremap <leader>wt <C-w>T
-noremap <leader><Tab> <C-^>
-
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprev<cr>
 
-" jump to char
-noremap <leader>j <Plug>(easymotion-s)
+set autochdir "when changing files also change current directory
+set splitright
+set splitbelow
 
-"file new
-noremap <leader>fn :vert new<CR>
-"vim new
-noremap <leader>vn :!start gvim<CR>
-
-"source vimrc
-noremap <leader>sv :source $MYVIMRC<CR>
-
-"vimrc
-noremap <leader>vrc :e $MYVIMRC<CR>
-"bashrc
-noremap <leader>brc :e ~/.bashrc<CR>
-"riderrc
-noremap <leader>rrc :e ~/.ideavimrc<CR>
-
-" ========= COLORS AND FONTS FOR VIM THEME =========
+" ========= colors and fonts =========
+set guifont=Consolas:h11
 set background=dark
 set termguicolors
 colorscheme gruvbox
 
 
-" ========= starting window size =========
+" ========= window customization =========
 set lines=58 columns=118
 :winpos 1520 180
 
+set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+set guioptions-=r  "scrollbar
+set scrolloff=1
 
-" ========= goyo =========
-noremap <leader>gy :Goyo<CR>
 
 " ========= nerdtree =========
 set guioptions-=L "no vertical scrollbar when window split
@@ -149,18 +175,6 @@ function! NERDTreeToggleInCurDir()
     endif
   endif
 endfunction
-nnoremap <leader>nt :call NERDTreeToggleInCurDir()<CR>
-
-
-" ========= search =========
-noremap <leader>pf :CtrlP<CR>
-noremap <leader>pw :CtrlP ~/vimwiki/<CR>
-noremap <leader>b :CtrlPBuffer<CR>
-noremap <leader>pr :CtrlPMRU<CR>
-noremap <leader>ss :CtrlPLine<CR>
-noremap <leader>/ :Ag<SPACE>
-
-:nnoremap <silent> <ESC> :nohlsearch<Bar>:echo<CR>
 
 " ========= formatting =========
 function! FormatPurchaseLogs()
@@ -170,36 +184,14 @@ function! FormatPurchaseLogs()
     exe ":%s/Log/\rNEXT_STAT/g"
     exe ":g/Payload/d"
 endfunction
-"purchase logs
-noremap <leader>purl :call FormatPurchaseLogs()<CR>
-
-"format json
-noremap <leader>fj :Autoformat json<CR>
-"format white space
-noremap <leader>fws :%s/\s\+$/<CR>
-"format empty lines
-noremap <leader>fel :g/^$/d<CR>
-
-"datetime
-noremap <leader>dt :put=strftime('%Y/%m/%d %a %H:%M')<CR>
 
 " ========= instant markdown =========
-"if things don't work, use :InstantMarkdownStop and try again
+let g:instant_markdown_autostart = 0
 noremap <leader>md :InstantMarkdownPreview<CR>
 noremap <leader>ms :InstantMarkdownStop<CR>
-let g:instant_markdown_autostart = 0
+
 
 " ========= vimwiki =========
-"pot -> potentials
-noremap <leader>poti :e ~/vimwiki/potential_index.md<CR>
-noremap <leader>potf :cd ~/vimwiki/potentials/<CR>:Ag<SPACE>
-noremap <leader>bu :e ~/vimwiki/bachir_update.md<CR>
-
-nnoremap <leader>vwh <Plug>Vimwiki2HTML
-nnoremap <leader>vws <Plug>VimwikiUISelect
-nnoremap <leader>wti <Plug>VimwikiTabIndex
-nnoremap <leader>wn <Plug>VimwikiNextLink
-
 let g:vimwiki_list = [{
             \'path': '~/vimwiki/',
             \'path_html': '~/vimwiki/html/',
@@ -212,19 +204,18 @@ let g:vimwiki_list = [{
             \'custom_wiki2html': 'vimwiki_markdown.py'}]
 
 hi VimwikiHeaderChar guifg=#fe8019
-hi VimwikiHeader1 guifg=#fabd2d 
+hi VimwikiHeader1 guifg=#fabd2d
 hi VimwikiHeader2 guifg=#8ab461
 hi VimwikiHeader3 guifg=#52b3d3
 hi VimwikiHeader4 guifg=#dab1ff
 hi VimwikiLink guifg=#52b3d3
-hi VimwikiList guifg=#d8b0fd 
+hi VimwikiList guifg=#d8b0fd
 hi VimwikiCode guifg=#8ab461
 
 let g:vimwiki_global_ext=0
 let g:vimwiki_folding='custom'
 
 " ========= folding =========
-"Zorro zc - close; zo - open; zM - mask; zR - reveal
 function! WikiFolds()
     let thisline = getline(v:lnum)
     if thisline =~ '^####\s\S'
@@ -254,3 +245,7 @@ noremap <Tab> za
 
 "========= abbreviations =========
 iabbrev simg ![skype_image](file:additionalInfo/)
+
+" ========= Airline Plugin Commands =========
+let g:airline#extensions#tabline#enabled = 1
+
