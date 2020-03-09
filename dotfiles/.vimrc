@@ -68,8 +68,8 @@ let g:which_key_map.f = {
     \ }
 
 let g:which_key_map.i = {
-    \ 'name' : '+buffer',
-    \ 'd' : [':put=strftime('%Y/%m/%d %a %H:%M')', 'datetime'],
+    \ 'name' : '+insert',
+    \ 'd' : [":call GetDateTime()", 'datetime'],
     \ }
 
 let g:which_key_map.o = {
@@ -248,4 +248,9 @@ iabbrev simg ![skype_image](file:additionalInfo/)
 
 " ========= Airline Plugin Commands =========
 let g:airline#extensions#tabline#enabled = 1
+
+" ========= datetime =========
+function! GetDateTime()
+  exe ":put=strftime('%Y/%m/%d %a %H:%M')"
+endfunction
 
