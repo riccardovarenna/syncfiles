@@ -23,7 +23,7 @@ call vundle#end()
 set clipboard=unnamed
 let g:mapleader = "\<Space>"
 set ttimeout
-set timeoutlen=1500  " Time to wait for a command (after leader for example).
+set timeoutlen=500  " Time to wait for a command (after leader for example).
 set ttimeoutlen=100 " Time to wait for a key sequence.
 set ignorecase
 set smartcase
@@ -116,15 +116,16 @@ let g:which_key_map.w = {
     \ 't' : ['<C-w>T', 'tabo'],
     \ }
 
-noremap <leader>j <Plug>(easymotion-s)
-let g:which_key_map.j = { 'name' : 'jump' }
+nnoremap <leader>j <Plug>(easymotion-s)
+nnoremap <leader>/ :Ag<SPACE>
 
-nnoremap <leader>vwh <Plug>Vimwiki2HTML
-nnoremap <leader>vws <Plug>VimwikiUISelect
-nnoremap <leader>wti <Plug>VimwikiTabIndex
-nnoremap <leader>wn <Plug>VimwikiNextLink
+let g:which_key_map.v = { 'name' : '+vimwiki' }
+nmap <leader>vh <Plug>Vimwiki2HTML
+nmap <leader>vn <Plug>VimwikiNextLink
+nmap <leader>vp <Plug>VimwikiPrevLink
+nmap <leader>vs <Plug>VimwikiUISelect
+nmap <leader>vt <Plug>VimwikiTabIndex
 
-noremap <leader>/ :Ag<SPACE>
 
 call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
