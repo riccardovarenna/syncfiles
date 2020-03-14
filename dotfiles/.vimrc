@@ -45,6 +45,10 @@ xnoremap >  >gv
 "disable bells
 set noerrorbells
 set novisualbell
+
+set undofile
+set undodir=~/.vim/undo
+
 " Disables automatic commenting on newline:
 augroup format_options
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -57,6 +61,7 @@ let g:which_key_map = {}
 let g:which_key_map.b = {
     \ 'name' : '+buffer',
     \ 'l' : ['<C-^>', 'last buffer'],
+    \ 'b' : [':CtrlPBuffer', 'buffers'],
     \ }
 
 let g:which_key_map.f = {
