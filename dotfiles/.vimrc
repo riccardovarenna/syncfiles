@@ -27,7 +27,6 @@ set timeoutlen=500  " Time to wait for a command (after leader for example).
 set ttimeoutlen=100 " Time to wait for a key sequence.
 set ignorecase
 set smartcase
-set hlsearch
 set incsearch
 nnoremap <silent> <ESC> :nohlsearch<Bar>:echo<CR>
 set tabstop=4
