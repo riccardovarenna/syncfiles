@@ -1,11 +1,8 @@
-source ~/.vimrc
+"source ~/.vimrc
 
 " ===== setup =====
-" Powerline setup
-"set guifont=Hack\ 11
-
-" Always show statusline
 set showmode
+set clipboard=unnamed
 set multiple-cursors
 set surround
 set is "incsearch
@@ -13,8 +10,22 @@ set ic "ignorecase
 set scs "smartcase
 let mapleader = " "
 set ttimeout
-set timeoutlen=3000  " Time to wait for a command (after leader for example).
+set timeoutlen=500  " Time to wait for a command (after leader for example).
 set ttimeoutlen=100 " Time to wait for a key sequence.
+set tabstop=4
+set shiftwidth=4
+set expandtab "expands tab to tabstop spaces
+set linebreak "wrap whole words instead of splitting them in the middle
+
+"don't loose selection when shifting
+xnoremap <  <gv
+xnoremap >  >gv
+
+"Differs from 'j' when lines wrap, and when used with an operator, because it's not linewise.
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " ===== keymaps =====
 
