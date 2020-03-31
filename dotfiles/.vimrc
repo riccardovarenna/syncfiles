@@ -198,15 +198,10 @@ noremap <leader>ms :InstantMarkdownStop<CR>
 
 " ========= vimwiki =========
 let g:vimwiki_list = [{
-            \'path': '~/vimwiki/',
-            \'path_html': '~/vimwiki/html/',
             \'syntax': 'markdown',
             \'ext': '.md',
             \'root_path': '~/vimwiki/',
-            \'template_path': '~/vimwiki/templates/',
-            \'template_default': 'templates/def_template',
-            \'template_ext': '.html',
-            \'custom_wiki2html': 'vimwiki_markdown.py'}]
+            }]
 
 hi VimwikiHeaderChar guifg=#fe8019
 hi VimwikiHeader1 guifg=#fabd2d
