@@ -200,8 +200,7 @@ noremap <leader>ms :InstantMarkdownStop<CR>
 let g:vimwiki_list = [{
             \'syntax': 'markdown',
             \'ext': '.md',
-            \'root_path': '~/vimwiki/',
-            }]
+            \'root_path': '~/vimwiki/'}]
 
 hi VimwikiHeaderChar guifg=#fe8019
 hi VimwikiHeader1 guifg=#fabd2d
