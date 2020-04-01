@@ -61,6 +61,7 @@ let g:which_key_map.b = {
     \ 'name' : '+buffer',
     \ 'l' : ['<C-^>', 'last buffer'],
     \ 'b' : [':CtrlPBuffer', 'buffers'],
+    \ 'o' : [':%bd|e#', 'only'],
     \ }
 
 let g:which_key_map.f = {
@@ -148,6 +149,8 @@ nnoremap [q :cprev<cr>
 set autochdir "when changing files also change current directory
 set splitright
 set splitbelow
+
+let g:ctrlp_custom_ignore = 'potentials\'
 
 " ========= colors and fonts =========
 set guifont=Consolas:h11
