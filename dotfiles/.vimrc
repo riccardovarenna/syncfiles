@@ -37,7 +37,7 @@ set nocompatible "no compatible with Vi enables other options
 filetype plugin indent on
 syntax on
 set encoding=utf-8
-set pythonthreedll=python37.dll "use this python version
+set pythonthreedll=python38.dll "use this python version
 "don't loose selection when shifting
 xnoremap <  <gv
 xnoremap >  >gv
@@ -167,7 +167,6 @@ set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
 set scrolloff=1
-
 
 " ========= nerdtree =========
 set guioptions-=L "no vertical scrollbar when window split
