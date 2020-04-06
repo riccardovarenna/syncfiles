@@ -75,11 +75,11 @@ noremap <leader>en :action GotoNextError<CR>
 noremap <leader>ep :action GotoPreviousError<CR>
 
 noremap <leader>gl :action Vcs.Show.Log<CR>
-noremap <leader>gsc :action Vcs.Show.Local.Changes<CR>
+noremap <leader>gs :action Vcs.Show.Local.Changes<CR>
 map <leader>gb :action Git.Branches<cr>
-map <leader>gcb :action Git.CompareWithBranch<cr>
+map <leader>gc :action Git.CompareWithBranch<cr>
 map <leader>ga :action Annotate<cr>
-map <leader>grc :action Git.ResolveConflicts<cr>
+map <leader>gr :action Git.ResolveConflicts<cr>
 
 "***file changes
 map <leader>fs :action SaveAll<cr>
