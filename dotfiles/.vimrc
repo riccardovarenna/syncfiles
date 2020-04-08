@@ -80,6 +80,7 @@ let g:which_key_map.i = {
 let g:which_key_map.o = {
     \ 'name' : '+open',
     \ 'b' : [':e ~/.bashrc', 'bashrc'],
+    \ 'c' : [':e ~/vimwiki/check_with.md', 'check_with'],
     \ 'd' : [':setlocal spell! spelllang=de', 'deutsch spellcheck'],
     \ 'e' : [':setlocal spell! spelllang=en_us', 'english spellcheck'],
     \ 'f' : [':vert new', 'file'],
@@ -87,7 +88,6 @@ let g:which_key_map.o = {
     \ 'n' : [':call NERDTreeToggleInCurDir()', 'nerdtree'],
     \ 'p' : [':e ~/vimwiki/potential_index.md', 'potentials'],
     \ 'r' : [':e ~/.ideavimrc', 'rider'],
-    \ 'u' : [':e ~/vimwiki/bachir_update.md', 'bachir'],
     \ 'v' : [':e $MYVIMRC', 'vimrc'],
     \ 'w' : [':!start gvim', 'window'],
     \ }
@@ -215,6 +215,8 @@ hi VimwikiCode guifg=#8ab461
 
 let g:vimwiki_global_ext=0
 let g:vimwiki_folding='custom'
+
+:command! -range=% -nargs=1 SumColumn <line1>,<line2>!awk -F '|' '{print; sum+=$('<args>' + 1)} END {print "Total: "sum}'
 
 " ========= folding =========
 function! WikiFolds()
