@@ -216,8 +216,6 @@ hi VimwikiCode guifg=#8ab461
 let g:vimwiki_global_ext=0
 let g:vimwiki_folding='custom'
 
-:command! -range=% -nargs=1 SumColumn <line1>,<line2>!awk -F '|' '{print; sum+=$('<args>' + 1)} END {print "Total: "sum}'
-
 " ========= folding =========
 function! WikiFolds()
     let thisline = getline(v:lnum)
