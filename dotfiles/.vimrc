@@ -233,7 +233,7 @@ function! WikiFolds()
 endfunction
 
 set foldenable
-set foldlevelstart=1
+"set foldlevelstart=1
 set foldexpr=WikiFolds()
 set foldmethod=expr
 
