@@ -80,7 +80,7 @@ let g:which_key_map.i = {
 let g:which_key_map.o = {
     \ 'name' : '+open',
     \ 'b' : [':e ~/.bashrc', 'bashrc'],
-    \ 'c' : [':e ~/vimwiki/check_with.md', 'check_with'],
+    \ 'c' : [':e ~/vimwiki/coding.md', 'coding'],
     \ 'd' : [':setlocal spell! spelllang=de', 'deutsch spellcheck'],
     \ 'e' : [':setlocal spell! spelllang=en_us', 'english spellcheck'],
     \ 'f' : [':vert new', 'file'],
@@ -88,6 +88,7 @@ let g:which_key_map.o = {
     \ 'n' : [':call NERDTreeToggleInCurDir()', 'nerdtree'],
     \ 'p' : [':e ~/vimwiki/potential_index.md', 'potentials'],
     \ 'r' : [':e ~/.ideavimrc', 'rider'],
+    \ 't' : [':e ~/vimwiki/todo.md', 'todo'],
     \ 'v' : [':e $MYVIMRC', 'vimrc'],
     \ 'w' : [':!start gvim', 'window'],
     \ }
