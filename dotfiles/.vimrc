@@ -33,6 +33,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab "expands tab to tabstop spaces
 set linebreak "wrap whole words instead of splitting them in the middle
+set nowrap
 set nocompatible "no compatible with Vi enables other options
 filetype plugin indent on
 syntax on
