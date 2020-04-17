@@ -4,7 +4,20 @@
 ;; sync' after modifying this file!
 
 (map! :leader "SPC" #'execute-extended-command)
+(map! :leader :desc "open todo" "ot" (lambda () (interactive) (find-file "~/org/todo.org")))
+(map! :leader :desc "search dir" "/" #'counsel-ag)
+(map! :leader :desc "narrow toggle" "on" #'org-toggle-narrow-to-subtree)
 
+(add-to-list 'org-modules 'org-checklist)
+
+(after! org
+  (setq org-capture-templates
+        '(("j" "journal" entry
+           (file+olp+datetree +org-capture-journal-file)
+           "* %U\n** plan\n- [ ] %?" :prepend t)
+         ("t" "todo" entry
+           (file+headline +org-capture-todo-file "inbox")
+           "* TODO %?"))))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -21,7 +34,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "monospace" :size 14))
+(setq doom-font (font-spec :family "consolas" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
