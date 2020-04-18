@@ -59,6 +59,9 @@ alias gfa="gf add"
 alias gfc="gf checkout"
 alias gfr="gf reset"
 
+alias swf=swf.sh
+alias swh=swh.sh
+
 alias gitInit=gitInit.sh
 alias gitDelete='git branch | grep -v "rico\|develop\|beta_local\|staging\|staging_hotfix\|staging_server_hotfix\|production" | xargs git branch -D'
 # delete remove branches for reference
