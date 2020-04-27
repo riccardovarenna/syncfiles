@@ -8,16 +8,43 @@
 (map! :leader :desc "search dir" "/" #'counsel-ag)
 (map! :leader :desc "narrow toggle" "on" #'org-toggle-narrow-to-subtree)
 
+(global-set-key (kbd "M-c") 'shell)
+
 (add-to-list 'org-modules 'org-checklist)
 
 (after! org
   (setq org-capture-templates
         '(("j" "journal" entry
            (file+olp+datetree +org-capture-journal-file)
-           "* %U\n** plan\n- [ ] %?" :prepend t)
-         ("t" "todo" entry
+           "* %U\n** plan\n*** TODO %?" :prepend t)
+          ("t" "todo" entry
            (file+headline +org-capture-todo-file "inbox")
-           "* TODO %?"))))
+           "* TODO %?")))
+  (setq org-todo-keywords
+        '((sequence
+           "TODO(t)"  ; A task that needs doing & is ready to do
+           "OUTS(o)"  ; outsource this task
+           "WAIT(w)"  ; Something external is holding up this task
+           "HOLD(h)"  ; This task is paused/on hold because of me
+           "|"
+           "DONE(d)"  ; Task successfully completed
+           "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
+          (sequence
+           "[ ](T)"   ; A task that needs doing
+           "[-](S)"   ; Task is in progress
+           "[?](W)"   ; Task is being held up or paused
+           "|"
+           "[X](D)")) ; Task was completed
+        org-todo-keyword-faces
+        '(("[-]"  . +org-todo-active)
+          ("[?]"  . +org-todo-onhold)
+          ("WAIT" . +org-todo-onhold)))
+  (setq org-tag-alist
+        '(("emacs" . ?e) ("bachir" . ?b) ("jan" . ?j) ("cedric" . ?c) ("nolan" . ?n)))
+)
+
+
+(setq ispell-program-name "aspell")
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
