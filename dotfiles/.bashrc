@@ -59,6 +59,8 @@ alias gfa="gf add"
 alias gfc="gf checkout"
 alias gfr="gf reset"
 
+alias gstash="git stash save -u"
+
 alias swf=swf.sh
 alias swh=swh.sh
 

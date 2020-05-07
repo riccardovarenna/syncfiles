@@ -10,41 +10,70 @@
 
 (global-set-key (kbd "M-c") 'shell)
 
+(global-set-key (kbd "M-n") 'evil-mc-make-and-goto-next-match)
+(global-set-key (kbd "C-L") 'evil-mc-make-all-cursors)
+
 (add-to-list 'org-modules 'org-checklist)
 
 (after! org
   (setq org-capture-templates
-        '(("j" "journal" entry
+        '(("p" "journal plan" entry
            (file+olp+datetree +org-capture-journal-file)
-           "* %U\n** plan\n*** TODO %?" :prepend t)
+           "* %U\n** plan [/]\n- [ ] %?" :prepend t)
+          ("j" "journal entry" entry
+           (file+olp+datetree +org-capture-journal-file)
+           "* %U\n%?" :prepend t)
           ("t" "todo" entry
            (file+headline +org-capture-todo-file "inbox")
-           "* TODO %?")))
+           "* TODO %?")
+          ("c" "check with everyone" entry
+           (file+headline +org-capture-todo-file "check with everyone")
+           "* TODO %? [/]\n- [ ] Adan\n- [ ] Axel\n- [ ] Ben\n- [ ] Brian\n- [ ] Igor\n- [ ] Jakob\n- [ ] Konrad\n- [ ] Leon\n- [ ] Nikita\n- [ ] Oskar\n- [ ] Rasmus\n- [ ] Rowan\n- [ ] Sebastian\n- [ ] Xan")
+          )
+        )
   (setq org-todo-keywords
         '((sequence
-           "TODO(t)"  ; A task that needs doing & is ready to do
-           "OUTS(o)"  ; outsource this task
-           "WAIT(w)"  ; Something external is holding up this task
-           "HOLD(h)"  ; This task is paused/on hold because of me
+           "TODO(t)"       ; A task that needs doing & is ready to do
+           "OUTS(o)"       ; outsource this task
+           "WAIT(w)"       ; Something external is holding up this task
+           "HOLD(h)"       ; This task is paused/on hold because of me
            "|"
-           "DONE(d)"  ; Task successfully completed
-           "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
+           "DONE(d)"       ; Task successfully completed
+           "CANCELLED(c)") ; Task was cancelled, aborted or is no longer applicable
           (sequence
-           "[ ](T)"   ; A task that needs doing
-           "[-](S)"   ; Task is in progress
-           "[?](W)"   ; Task is being held up or paused
+           "[ ](T)"        ; A task that needs doing
+           "[-](S)"        ; Task is in progress
+           "[?](W)"        ; Task is being held up or paused
            "|"
-           "[X](D)")) ; Task was completed
+           "[X](D)"))      ; Task was completed
         org-todo-keyword-faces
         '(("[-]"  . +org-todo-active)
           ("[?]"  . +org-todo-onhold)
           ("WAIT" . +org-todo-onhold)))
   (setq org-tag-alist
         '(("emacs" . ?e) ("bachir" . ?b) ("jan" . ?j) ("cedric" . ?c) ("nolan" . ?n)))
+  (setq org-log-into-drawer t)
 )
 
+(setq calendar-latitude 51.7)
+(setq calendar-longitude 14.6)
+
+(defun save-all ()
+    (interactive)
+    (save-some-buffers t))
+
+(add-hook 'focus-out-hook 'save-all)
 
 (setq ispell-program-name "aspell")
+
+(defun my-save-word ()
+  (interactive)
+  (let ((current-location (point))
+         (word (flyspell-get-word)))
+    (when (consp word)
+      (flyspell-do-correct 'save nil (car word) current-location (cadr word) (caddr word) current-location))))
+
+(map! :leader :desc "save-word" "sw" #'my-save-word)
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.

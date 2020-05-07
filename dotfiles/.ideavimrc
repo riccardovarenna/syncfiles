@@ -36,6 +36,7 @@ map gb :action Back<CR>
 map gf :action Forward<CR>
 map gc :action CommentByLineComment<cr>
 map gh :action ShowErrorDescription<cr>
+map go :action QuickImplementations<cr>
 
 
 "***search***
@@ -65,7 +66,7 @@ map <leader>cu :action UnselectPreviousOccurrence<cr>
 "***window actions***
 map <leader>wh :action PrevSplitter<cr>
 map <leader>wl :action NextSplitter<cr>
-map <leader>wo :action UnsplitAll<cr> <bar> :action CloseAllEditorsButActive<cr>  
+map <leader>wo :action Unsplit<cr> <bar> :action CloseAllEditorsButActive<cr>
 map <leader>to :action CloseAllEditorsButActive<cr>
 map <leader>ws :action SplitVertically<cr>
 map <leader>wu :action ReopenClosedTab<cr>

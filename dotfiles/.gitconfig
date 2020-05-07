@@ -5,7 +5,7 @@
 	trustExitCode = true
 [user]
 	email = riccardovarenna@hotmail.de
-	name = Riccardo
+	name = Riccardo Varenna
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
