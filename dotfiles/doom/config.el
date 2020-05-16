@@ -7,6 +7,7 @@
 (map! :leader :desc "open todo" "ot" (lambda () (interactive) (find-file "~/org/todo.org")))
 (map! :leader :desc "search dir" "/" #'counsel-ag)
 (map! :leader :desc "narrow toggle" "on" #'org-toggle-narrow-to-subtree)
+;;(map! :localleader :desc "sort" "s" #'org-sort)
 
 (global-set-key (kbd "M-c") 'shell)
 
@@ -34,9 +35,9 @@
   (setq org-todo-keywords
         '((sequence
            "TODO(t)"       ; A task that needs doing & is ready to do
+           "HOLD(h)"       ; This task is paused/on hold because of me
            "OUTS(o)"       ; outsource this task
            "WAIT(w)"       ; Something external is holding up this task
-           "HOLD(h)"       ; This task is paused/on hold because of me
            "|"
            "DONE(d)"       ; Task successfully completed
            "CANCELLED(c)") ; Task was cancelled, aborted or is no longer applicable
@@ -49,6 +50,7 @@
         org-todo-keyword-faces
         '(("[-]"  . +org-todo-active)
           ("[?]"  . +org-todo-onhold)
+          ("HOLD" . +org-todo-onhold)
           ("WAIT" . +org-todo-onhold)))
   (setq org-tag-alist
         '(("emacs" . ?e) ("bachir" . ?b) ("jan" . ?j) ("cedric" . ?c) ("nolan" . ?n)))

@@ -15,3 +15,5 @@
 	editor = vim
 [alias]
     clipdev = "!sh -c 'git merge-base develop \"$0\" | clip'"
+[mergetool]
+	keepBackup = false
