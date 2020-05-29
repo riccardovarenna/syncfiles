@@ -10,9 +10,28 @@
 ;;(map! :localleader :desc "sort" "s" #'org-sort)
 
 (global-set-key (kbd "M-c") 'shell)
+(setq-default explicit-shell-file-name "C:\\Program Files\\Git\\bin\\bash")
+
+(defun yt-dl-it (url)
+  "Downloads the URL in an async shell"
+  (let ((default-directory "~/Downloads"))
+    (async-shell-command (format "youtube-dl %s" url))))
+
+(defun elfeed-youtube-dl (&optional use-generic-p)
+  "Youtube-DL link"
+  (interactive "P")
+  (let ((entries (elfeed-search-selected)))
+    (cl-loop for entry in entries
+             do (elfeed-untag entry 'unread)
+             when (elfeed-entry-link entry)
+             do (yt-dl-it it))
+    (mapc #'elfeed-search-update-entry entries)
+    (unless (use-region-p) (forward-line))))
+
+(map! :leader :desc "save-media" "sM" #'elfeed-youtube-dl)
+
 
 (global-set-key (kbd "M-n") 'evil-mc-make-and-goto-next-match)
-(global-set-key (kbd "C-L") 'evil-mc-make-all-cursors)
 
 (add-to-list 'org-modules 'org-checklist)
 
@@ -55,6 +74,7 @@
   (setq org-tag-alist
         '(("emacs" . ?e) ("bachir" . ?b) ("jan" . ?j) ("cedric" . ?c) ("nolan" . ?n)))
   (setq org-log-into-drawer t)
+  (setq org-agenda-show-future-repeats nil)
 )
 
 (setq calendar-latitude 51.7)
