@@ -85,6 +85,6 @@ alias gettwitchdata="~/syncfiles/twitch/get_channel_data.sh"
 
 alias todo='grep "\*\s\[\s\]" ~/vimwiki/*.md | sed "s/\/c\/Users\/Riccardo\/vimwiki\///" | gvim -'
 
-alias coggen='python ".\Tools\Cog\runner.py" -u'
+alias codegen='python ".\syncfiles\projects\codegen\runner.py" -s'
 
 alias copydoom='~/syncfiles/copydoomconfig.bat'
