@@ -20,6 +20,7 @@ alias gch='git checkout'
 alias chdev="gch develop"
 alias gdis='gch .'
 alias gdisother='git checkout *.mat *.asset *.spriteatlas *.prefab'
+alias gnuke='gch . & git clean -df'
 alias gshow=ShowOldFile.sh
 alias gsha='git rev-parse --short HEAD'
 alias ghash='gsha | clip.exe'
