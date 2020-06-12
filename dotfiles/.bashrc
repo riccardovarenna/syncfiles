@@ -33,7 +33,7 @@ alias ff="git flow feature finish && git push"
 alias gfo='git fetch origin'
 alias fetchdev="git fetch origin develop:develop"
 alias fetchall=FetchBranches.sh
-alias mergedev='git merge develop'
+alias mergedev='git merge origin/develop'
 alias gres=ResolveConflict.sh
 alias grest='gres --theirs'
 alias gresm='gres --ours'
@@ -89,3 +89,7 @@ alias todo='grep "\*\s\[\s\]" ~/vimwiki/*.md | sed "s/\/c\/Users\/Riccardo\/vimw
 alias codegen='python ".\syncfiles\projects\codegen\runner.py" -s'
 
 alias copydoom='~/syncfiles/copydoomconfig.bat'
+
+function isAncestor {
+    git merge-base --is-ancestor $1 $2 && echo "Yes. $1 is an ancestor of $2" || echo "No. $1 is not an ancestor of $2"
+}
