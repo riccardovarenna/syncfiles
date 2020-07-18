@@ -35,6 +35,10 @@
 
 (add-to-list 'org-modules 'org-checklist)
 
+(after! elfeed
+  (setq elfeed-enclosure-default-dir "~\\Downloads\\")
+)
+
 (after! org
   (setq org-capture-templates
         '(("p" "journal plan" entry
@@ -144,3 +148,16 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(elfeed-feeds
+   '("https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q" "https://www.youtube.com/playlist?list=UUxkMDXQ5qzYOgXPRnOBrp1w" "https://www.youtube.com/feeds/videos.xml?channel_id=UCiSC9gerE3Ql5Xt-Z51OD2w" "https://www.youtube.com/feeds/videos.xml?channel_id=UC-9C9d1qDDzA2jdH53vSIuA" "https://www.youtube.com/feeds/videos.xml?channel_id=UCMsNS10PzxzEayT7UHS4p6g" "https://www.youtube.com/feeds/videos.xml?channel_id=UC8THb_fnOptyVgpi3xuCd-A" "https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA" "https://www.youtube.com/feeds/videos.xml?channel_id=UCkjsXZlc-5PyW5xAPlUmw3w" "https://www.youtube.com/feeds/videos.xml?channel_id=UC4rZq6S7sV6gljt_4vjdXIw" "https://www.youtube.com/feeds/videos.xml?channel_id=UCtXuWXsd7TYXwX2ZNLXfojg" "https://www.reddit.com/r/planetemacs/.rss" "https://www.reddit.com/r/emacs/.rss" "https://www.reddit.com/r/orgmode/.rss" "https://www.reddit.com/r/evilmode/.rss" "https://www.reddit.com/r/DoomEmacs/.rss" "https://www.techmeme.com/feed.xml" "https://hnrss.org/frontpage" "http://feeds.feedburner.com/AmazonWebServicesBlog" "http://feeds.wnyc.org/moreperfect" "http://feeds.feedburner.com/JupiterBroadcasting" "http://feeds.feedburner.com/DarknetDiaries" "http://ubuntupodcast.org/feed/podcast" "http://podcast.theschmidtshow.com/rss" "https://feeds.megaphone.fm/KM4602122913" "http://www.jupiterbroadcasting.com/feeds/unfilterMP3.xml" "https://www.youtube.com/feeds/videos.xml?channel_id=UCzQUP1qoWDoEbmsQxvdjxgQ" "https://feeds.hackablepodcast.com/hackable" "https://d3gih7jbfe3jlq.cloudfront.net/aws-podcast.rss" "https://pinecast.com/feed/emacscast" "http://feeds.wnyc.org/radiolab" "http://freecodecamp.libsyn.com/rss" "https://thenew.show/feed/podcast" "http://criticalrolepodcast.geekandsundry.com/feed.xml" "http://feeds.soundcloud.com/users/soundcloud:users:265435079/sounds.rss" "http://feeds.nightvalepresents.com/welcometonightvalepodcast" "http://feed.nashownotes.com/rss.xml" "http://feeds.podtrac.com/tBPkjrcL0_m0" "http://latenightlinux.com/feed/mp3" "http://feeds.feedburner.com/80000HoursPodcast" "https://feeds.pacific-content.com/commandlineheroes" "http://feeds.podtrac.com/q8s8ba9YtM6r" "http://feeds.feedburner.com/dancarlin/history?format=xml" "http://feeds.megaphone.fm/PNP1207584390" "https://feeds.megaphone.fm/futureperfect" "https://asknoah.fireside.fm/rss" "http://rss.acast.com/intelligencesquared" "http://destinationlinux.org/feed/mp3/" "http://feeds.feedburner.com/ProgrammingThrowdown" "https://www.reddit.com/r/worldnews/.rss")))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
