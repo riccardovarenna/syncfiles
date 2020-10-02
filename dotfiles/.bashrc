@@ -66,7 +66,7 @@ alias swf=swf.sh
 alias swh=swh.sh
 
 alias gitInit=gitInit.sh
-alias gitDelete='git branch | grep -v "rico\|develop\|beta_local\|staging\|staging_hotfix\|staging_server_hotfix\|production" | xargs git branch -D'
+alias gitDelete='git branch | grep -v "rico\|cherrypick\|cherrypick\|develop\|beta_local\|staging\|staging_hotfix\|staging_server_hotfix\|production" | xargs git branch -D'
 # delete remove branches for reference
 # git branch -r | grep rico | grep -v "12\|13\|14\|bulkbutton\|purchases" | grep -oP "(?<=origin\/).*" | xargs git push origin --delete --dry-run
 alias startserver="START dotnet run --project ../Build/Build StartLocalServer"

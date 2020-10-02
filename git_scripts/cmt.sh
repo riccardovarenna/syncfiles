@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 message=""
 push=0
 addAll=0
-updateAll=0
+noEdit=0
 for arg do
     case ${arg} in 
         -p|--push)
@@ -12,33 +12,30 @@ for arg do
         -a)
 			addAll=1
 			;;
-        -u)
-			updateAll=1
-			;;
 		-ap|-pa)
 			addAll=1
 			push=1
 			;;
-		-up|-pu)
-			updateAll=1
-			push=1
-			;;
+        -ne|--no-edit)
+            noEdit=1
+            ;;
 		*)
             message=${arg}    
             ;;
     esac
-
+    
 done
 
-if [ "$addAll" -eq "0" ] && [ "$updateAll" -eq "0" ]; then
-	git commit -m "$message"
-elif [ "$addAll" -eq "1" ]; then
+if [ "$addAll" = "1" ]; then
 	git add .
-	git commit -m "$message"
-elif [ "$updateAll" -eq "1" ]; then
-	git add -u
-	git commit -m "$message"
 fi
+
+if [ "$noEdit" = "1" ]; then
+    git commit --no-edit
+else
+    git commit -m "$message"
+fi
+    
 
 if [[ ${push} > 0 ]]
 then

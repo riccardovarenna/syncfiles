@@ -58,9 +58,9 @@
   (setq org-todo-keywords
         '((sequence
            "TODO(t)"       ; A task that needs doing & is ready to do
+           "WAIT(w)"       ; Something external is holding up this task
            "HOLD(h)"       ; This task is paused/on hold because of me
            "OUTS(o)"       ; outsource this task
-           "WAIT(w)"       ; Something external is holding up this task
            "|"
            "DONE(d)"       ; Task successfully completed
            "CANCELLED(c)") ; Task was cancelled, aborted or is no longer applicable
