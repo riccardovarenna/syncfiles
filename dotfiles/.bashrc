@@ -49,6 +49,8 @@ alias cscmt="gxac && cmt"
 alias cmtBuildAndroid="git commit --allow-empty -m 'do /androidonly' && git push"
 alias cmtBuildIos="git commit --allow-empty -m 'do /ios' && git push"
 alias cmtBuild="git commit --allow-empty -m 'do /androidonly /ios' && git push"
+alias chp="git fetch origin cherrypick:cherrypick && git checkout cherrypick"
+alias chpp="git fetch origin cherrypickpendingmerge:cherrypickpendingmerge && git checkout cherrypickpendingmerge"
 
 alias gd=gitd.sh # "*" "/*" $*
 alias gda="gd add"

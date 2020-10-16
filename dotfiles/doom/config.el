@@ -9,6 +9,9 @@
 (map! :leader :desc "narrow toggle" "on" #'org-toggle-narrow-to-subtree)
 ;;(map! :localleader :desc "sort" "s" #'org-sort)
 
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
 (global-set-key (kbd "M-c") 'shell)
 (setq-default explicit-shell-file-name "C:\\Program Files\\Git\\bin\\bash")
 
@@ -32,6 +35,7 @@
 
 
 (global-set-key (kbd "M-n") 'evil-mc-make-and-goto-next-match)
+(global-set-key (kbd "M-N") 'evil-mc-make-cursor-in-visual-selection-beg)
 
 (add-to-list 'org-modules 'org-checklist)
 
@@ -63,13 +67,7 @@
            "OUTS(o)"       ; outsource this task
            "|"
            "DONE(d)"       ; Task successfully completed
-           "CANCELLED(c)") ; Task was cancelled, aborted or is no longer applicable
-          (sequence
-           "[ ](T)"        ; A task that needs doing
-           "[-](S)"        ; Task is in progress
-           "[?](W)"        ; Task is being held up or paused
-           "|"
-           "[X](D)"))      ; Task was completed
+           "CANCELLED(c)")) ; Task was cancelled, aborted or is no longer applicable
         org-todo-keyword-faces
         '(("[-]"  . +org-todo-active)
           ("[?]"  . +org-todo-onhold)
