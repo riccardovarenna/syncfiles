@@ -94,6 +94,8 @@ alias copydoom='~/syncfiles/copydoomconfig.bat'
 
 alias deltmp='C:/ClashOfStreamers/Tools/deltmp/deltmp.bat'
 
+#$1<maybe-ancestor-commit> $2<descendant-commit>
+#$1 parent $2 child
 function isAncestor {
     git merge-base --is-ancestor $1 $2 && echo "Yes. $1 is an ancestor of $2" || echo "No. $1 is not an ancestor of $2"
 }

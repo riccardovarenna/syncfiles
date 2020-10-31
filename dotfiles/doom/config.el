@@ -9,8 +9,10 @@
 (map! :leader :desc "narrow toggle" "on" #'org-toggle-narrow-to-subtree)
 ;;(map! :localleader :desc "sort" "s" #'org-sort)
 
-(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+;(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+;(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
+(setq confirm-kill-emacs nil)
 
 (global-set-key (kbd "M-c") 'shell)
 (setq-default explicit-shell-file-name "C:\\Program Files\\Git\\bin\\bash")
@@ -61,13 +63,13 @@
         )
   (setq org-todo-keywords
         '((sequence
-           "TODO(t)"       ; A task that needs doing & is ready to do
-           "WAIT(w)"       ; Something external is holding up this task
-           "HOLD(h)"       ; This task is paused/on hold because of me
-           "OUTS(o)"       ; outsource this task
+           "TODO(t!)"       ; A task that needs doing & is ready to do
+           "WAIT(w!)"       ; Something external is holding up this task
+           "HOLD(h!)"       ; This task is paused/on hold because of me
+           "OUTS(o!)"       ; outsource this task
            "|"
-           "DONE(d)"       ; Task successfully completed
-           "CANCELLED(c)")) ; Task was cancelled, aborted or is no longer applicable
+           "DONE(d!)"       ; Task successfully completed
+           "CANCELLED(c@)")) ; Task was cancelled, aborted or is no longer applicable
         org-todo-keyword-faces
         '(("[-]"  . +org-todo-active)
           ("[?]"  . +org-todo-onhold)
@@ -78,6 +80,12 @@
   (setq org-log-into-drawer t)
   (setq org-agenda-show-future-repeats nil)
 )
+
+;(use-package! org-super-agenda
+; :after org-agenda
+; :config
+; (setq org-super-agenda-groups '((:auto-dir-name t)))
+; (org-super-agenda-mode))
 
 (setq calendar-latitude 51.7)
 (setq calendar-longitude 14.6)
@@ -99,6 +107,16 @@
 
 (map! :leader :desc "save-word" "sw" #'my-save-word)
 
+(defun team/regex-builder-with-region ()
+  "Copy region into a temp file and start regex builder there"
+  (interactive)
+  (let ((str (region-str)))
+    (find-file (team-create-temp-file-on-region))
+    (delete-other-windows)
+    (regexp-builder)
+    (with-current-buffer
+        (get-buffer reb-buffer)
+      (insert str))))
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Riccardo Varenna"
@@ -114,7 +132,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "consolas" :size 14))
+(setq doom-font (font-spec :family "Fira Code" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the

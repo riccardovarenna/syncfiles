@@ -81,9 +81,14 @@ map <leader>gb :action Git.Branches<cr>
 map <leader>gc :action Git.CompareWithBranch<cr>
 map <leader>ga :action Annotate<cr>
 map <leader>gr :action Git.ResolveConflicts<cr>
+map <leader>gv :action Compare.Selected<cr>
 
 "***file changes
 map <leader>fs :action SaveAll<cr>
-map <leader>ev :action Tool_External Tools_gvim<cr>
-map <leader>ec :action Tool_External Tools_vscode<cr>
+map <leader>egv :action Tool_External Tools_gvim<cr>
+map <leader>evc :action Tool_External Tools_vscode<cr>
+map <leader>ecg :action Tool_External Tools_codegen<cr>
+map <leader>els :action Tool_External Tools_localserver<cr>
+map <leader>ecp :action Tool_External Tools_codepatcher<cr>
+map <leader>epg :action Tool_External Tools_purchasegen<cr>
 vmap = :action ReformatCode<cr>
