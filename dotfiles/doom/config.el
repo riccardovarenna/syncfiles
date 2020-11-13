@@ -5,8 +5,10 @@
 
 (map! :leader "SPC" #'execute-extended-command)
 (map! :leader :desc "open todo" "ot" (lambda () (interactive) (find-file "~/org/todo.org")))
+(map! :leader :desc "open potential_index" "op" (lambda () (interactive) (find-file "~/vimwiki/potential_index.org")))
 (map! :leader :desc "search dir" "/" #'counsel-ag)
 (map! :leader :desc "narrow toggle" "on" #'org-toggle-narrow-to-subtree)
+(map! :leader :desc "set timer" "tt" #'org-timer-set-timer)
 ;;(map! :localleader :desc "sort" "s" #'org-sort)
 
 ;(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
@@ -89,6 +91,7 @@
 
 (setq calendar-latitude 51.7)
 (setq calendar-longitude 14.6)
+(map! :i "C-i" #'flyspell-auto-correct-word)
 
 (defun save-all ()
     (interactive)
@@ -98,12 +101,15 @@
 
 (setq ispell-program-name "aspell")
 
+(setq ispell-personal-dictionary "C:\\Users\\Riccardo\\.aspell.en.pws")
+;;(setq spell-fu-directory "C:\\msys64\\mingw64\\lib\\aspell-0.60")
+
 (defun my-save-word ()
-  (interactive)
-  (let ((current-location (point))
-         (word (flyspell-get-word)))
-    (when (consp word)
-      (flyspell-do-correct 'save nil (car word) current-location (cadr word) (caddr word) current-location))))
+        (interactive)
+        (let ((current-location (point))
+        (word (flyspell-get-word)))
+        (when (consp word)
+        (flyspell-do-correct 'save nil (car word) current-location (cadr word) (caddr word) current-location))))
 
 (map! :leader :desc "save-word" "sw" #'my-save-word)
 
@@ -117,6 +123,31 @@
     (with-current-buffer
         (get-buffer reb-buffer)
       (insert str))))
+
+
+;;archive into subtree
+;;(defadvice org-archive-subtree (around my-org-archive-subtree activate)
+;;  (let ((org-archive-location
+;;         (if (save-excursion (org-back-to-heading)
+;;                             (> (org-outline-level) 1))
+;;             (concat (car (split-string org-archive-location "::"))
+;;                     "::* "
+;;                     (car (org-get-outline-path)))
+;;           org-archive-location)))
+;;    ad-do-it))
+
+
+
+
+
+
+
+
+
+
+
+
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Riccardo Varenna"
@@ -169,8 +200,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+
+ '(ispell-personal-dictionary "c:/Users/Riccardo/.aspell.en.pws")
+ '(org-show-notification-timeout 30)
+
  '(elfeed-feeds
-   '("https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q" "https://www.youtube.com/playlist?list=UUxkMDXQ5qzYOgXPRnOBrp1w" "https://www.youtube.com/feeds/videos.xml?channel_id=UCiSC9gerE3Ql5Xt-Z51OD2w" "https://www.youtube.com/feeds/videos.xml?channel_id=UC-9C9d1qDDzA2jdH53vSIuA" "https://www.youtube.com/feeds/videos.xml?channel_id=UCMsNS10PzxzEayT7UHS4p6g" "https://www.youtube.com/feeds/videos.xml?channel_id=UC8THb_fnOptyVgpi3xuCd-A" "https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA" "https://www.youtube.com/feeds/videos.xml?channel_id=UCkjsXZlc-5PyW5xAPlUmw3w" "https://www.youtube.com/feeds/videos.xml?channel_id=UC4rZq6S7sV6gljt_4vjdXIw" "https://www.youtube.com/feeds/videos.xml?channel_id=UCtXuWXsd7TYXwX2ZNLXfojg" "https://www.reddit.com/r/planetemacs/.rss" "https://www.reddit.com/r/emacs/.rss" "https://www.reddit.com/r/orgmode/.rss" "https://www.reddit.com/r/evilmode/.rss" "https://www.reddit.com/r/DoomEmacs/.rss" "https://www.techmeme.com/feed.xml" "https://hnrss.org/frontpage" "http://feeds.feedburner.com/AmazonWebServicesBlog" "http://feeds.wnyc.org/moreperfect" "http://feeds.feedburner.com/JupiterBroadcasting" "http://feeds.feedburner.com/DarknetDiaries" "http://ubuntupodcast.org/feed/podcast" "http://podcast.theschmidtshow.com/rss" "https://feeds.megaphone.fm/KM4602122913" "http://www.jupiterbroadcasting.com/feeds/unfilterMP3.xml" "https://www.youtube.com/feeds/videos.xml?channel_id=UCzQUP1qoWDoEbmsQxvdjxgQ" "https://feeds.hackablepodcast.com/hackable" "https://d3gih7jbfe3jlq.cloudfront.net/aws-podcast.rss" "https://pinecast.com/feed/emacscast" "http://feeds.wnyc.org/radiolab" "http://freecodecamp.libsyn.com/rss" "https://thenew.show/feed/podcast" "http://criticalrolepodcast.geekandsundry.com/feed.xml" "http://feeds.soundcloud.com/users/soundcloud:users:265435079/sounds.rss" "http://feeds.nightvalepresents.com/welcometonightvalepodcast" "http://feed.nashownotes.com/rss.xml" "http://feeds.podtrac.com/tBPkjrcL0_m0" "http://latenightlinux.com/feed/mp3" "http://feeds.feedburner.com/80000HoursPodcast" "https://feeds.pacific-content.com/commandlineheroes" "http://feeds.podtrac.com/q8s8ba9YtM6r" "http://feeds.feedburner.com/dancarlin/history?format=xml" "http://feeds.megaphone.fm/PNP1207584390" "https://feeds.megaphone.fm/futureperfect" "https://asknoah.fireside.fm/rss" "http://rss.acast.com/intelligencesquared" "http://destinationlinux.org/feed/mp3/" "http://feeds.feedburner.com/ProgrammingThrowdown" "https://www.reddit.com/r/worldnews/.rss")))
+   '("https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q" "https://www.youtube.com/playlist?list=UUxkMDXQ5qzYOgXPRnOBrp1w" "https://www.youtube.com/feeds/videos.xml?channel_id=UCiSC9gerE3Ql5Xt-Z51OD2w" "https://www.youtube.com/feeds/videos.xml?channel_id=UC-9C9d1qDDzA2jdH53vSIuA" "https://www.youtube.com/feeds/videos.xml?channel_id=UCMsNS10PzxzEayT7UHS4p6g" "https://www.youtube.com/feeds/videos.xml?channel_id=UC8THb_fnOptyVgpi3xuCd-A" "https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA" "https://www.youtube.com/feeds/videos.xml?channel_id=UCkjsXZlc-5PyW5xAPlUmw3w" "https://www.youtube.com/feeds/videos.xml?channel_id=UC4rZq6S7sV6gljt_4vjdXIw" "https://www.youtube.com/feeds/videos.xml?channel_id=UCtXuWXsd7TYXwX2ZNLXfojg" "https://www.reddit.com/r/emacs/.rss" "https://www.reddit.com/r/orgmode/.rss" "https://www.techmeme.com/feed.xml" "https://hnrss.org/frontpage" "http://feeds.wnyc.org/moreperfect" "http://feeds.feedburner.com/JupiterBroadcasting" "http://feeds.feedburner.com/DarknetDiaries" "http://ubuntupodcast.org/feed/podcast" "http://podcast.theschmidtshow.com/rss" "https://feeds.megaphone.fm/KM4602122913" "http://www.jupiterbroadcasting.com/feeds/unfilterMP3.xml" "https://www.youtube.com/feeds/videos.xml?channel_id=UCzQUP1qoWDoEbmsQxvdjxgQ" "https://feeds.hackablepodcast.com/hackable" "https://pinecast.com/feed/emacscast" "http://feeds.wnyc.org/radiolab" "http://freecodecamp.libsyn.com/rss" "https://thenew.show/feed/podcast" "http://criticalrolepodcast.geekandsundry.com/feed.xml" "http://feeds.soundcloud.com/users/soundcloud:users:265435079/sounds.rss" "http://feeds.nightvalepresents.com/welcometonightvalepodcast" "http://feed.nashownotes.com/rss.xml" "http://feeds.podtrac.com/tBPkjrcL0_m0" "http://latenightlinux.com/feed/mp3" "http://feeds.feedburner.com/80000HoursPodcast" "https://feeds.pacific-content.com/commandlineheroes" "http://feeds.podtrac.com/q8s8ba9YtM6r" "http://feeds.feedburner.com/dancarlin/history?format=xml" "http://feeds.megaphone.fm/PNP1207584390" "https://feeds.megaphone.fm/futureperfect" "http://rss.acast.com/intelligencesquared" "http://feeds.feedburner.com/ProgrammingThrowdown" "https://www.reddit.com/r/worldnews/.rss")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
