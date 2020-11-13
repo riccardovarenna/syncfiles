@@ -64,8 +64,8 @@ alias gfr="gf reset"
 
 alias gstash="git stash save -u"
 
-alias swf=swf.sh
-alias swh=swh.sh
+alias swf=swf.sh # git checkout "feature/rico/$1"
+alias swh=swh.sh # git checkout "hotfix/rico/$1"
 
 alias gitInit=gitInit.sh
 alias gitDelete='git branch | grep -v "rico\|cherrypick\|cherrypick\|develop\|beta_local\|staging\|staging_hotfix\|staging_server_hotfix\|production" | xargs git branch -D'
@@ -93,6 +93,10 @@ alias codegen='python ".\syncfiles\projects\codegen\runner.py" -s'
 alias copydoom='~/syncfiles/copydoomconfig.bat'
 
 alias deltmp='C:/ClashOfStreamers/Tools/deltmp/deltmp.bat'
+
+function cld {
+    git clipdev "origin/$1"
+}
 
 #$1<maybe-ancestor-commit> $2<descendant-commit>
 #$1 parent $2 child
