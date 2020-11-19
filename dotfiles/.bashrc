@@ -33,7 +33,7 @@ alias ff="git flow feature finish && git push"
 alias gfo='git fetch origin'
 alias fetchdev="git fetch origin develop:develop"
 alias fetchall=FetchBranches.sh
-alias mergedev='git merge origin/develop'
+alias mergedev='git fetch origin develop:develop && git merge origin/develop'
 alias gres=ResolveConflict.sh
 alias grest='gres --theirs'
 alias gresm='gres --ours'
@@ -49,6 +49,8 @@ alias cscmt="gxac && cmt"
 alias cmtBuildAndroid="git commit --allow-empty -m 'do /androidonly' && git push"
 alias cmtBuildIos="git commit --allow-empty -m 'do /ios' && git push"
 alias cmtBuild="git commit --allow-empty -m 'do /androidonly /ios' && git push"
+alias cmeta="cmt -a 'commit reoccurring meta files'"
+
 alias chp="git fetch origin cherrypick:cherrypick && git checkout cherrypick"
 alias chpp="git fetch origin cherrypickpendingmerge:cherrypickpendingmerge && git checkout cherrypickpendingmerge"
 
@@ -71,9 +73,10 @@ alias gitInit=gitInit.sh
 alias gitDelete='git branch | grep -v "rico\|cherrypick\|cherrypick\|develop\|beta_local\|staging\|staging_hotfix\|staging_server_hotfix\|production" | xargs git branch -D'
 # delete remove branches for reference
 # git branch -r | grep rico | grep -v "12\|13\|14\|bulkbutton\|purchases" | grep -oP "(?<=origin\/).*" | xargs git push origin --delete --dry-run
+alias logOldBranches=log_branches_older_than.sh
 alias startserver="START dotnet run --project ../Build/Build StartLocalServer"
 
-alias runJob=runjob.sh
+alias gdo=runjob.sh
 
 alias note='trello add-card -b "Riccardo" -l "Inbox" $1 -p bottom' #using https://travis-ci.org/mheap/trello-cli
 
@@ -88,7 +91,7 @@ alias gettwitchdata="~/syncfiles/twitch/get_channel_data.sh"
 
 alias todo='grep "\*\s\[\s\]" ~/vimwiki/*.md | sed "s/\/c\/Users\/Riccardo\/vimwiki\///" | gvim -'
 
-alias codegen='python ".\syncfiles\projects\codegen\runner.py" -s'
+alias purchasegen='python ".\syncfiles\projects\codegen\runner.py" -s'
 
 alias copydoom='~/syncfiles/copydoomconfig.bat'
 

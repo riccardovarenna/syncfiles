@@ -14,3 +14,4 @@ do
 done
 
 git gc --quiet --prune=now
+git fetch origin --prune

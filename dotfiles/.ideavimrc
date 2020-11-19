@@ -71,6 +71,7 @@ map <leader>wo :action Unsplit<cr> <bar> :action CloseAllEditorsButActive<cr>
 map <leader>to :action CloseAllEditorsButActive<cr>
 map <leader>ws :action SplitVertically<cr>
 map <leader>wu :action ReopenClosedTab<cr>
+map <leader>we <Action>(ActivateEventLogToolWindow)
 
 "***git version control***
 noremap <leader>en :action GotoNextError<CR>

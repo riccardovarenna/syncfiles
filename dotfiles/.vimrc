@@ -70,6 +70,7 @@ let g:which_key_map.f = {
     \ 'e' : [':g/^$/d', 'empty lines'],
     \ 'p' : [':call FormatPurchaseLogs()', 'purchase logs'],
     \ 'j' : [':Autoformat json', 'json'],
+    \ 's' : [':w', 'save'],
     \ 'w' : [':%s/\s\+$/', 'whitespace'],
     \ }
 
@@ -137,7 +138,7 @@ nmap <leader>vt <Plug>VimwikiTabIndex
 call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
-
+ 
 " ========= navigation =========
 "Differs from 'j' when lines wrap, and when used with an operator, because it's not linewise.
 nnoremap j gj
