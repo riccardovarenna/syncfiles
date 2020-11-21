@@ -50,6 +50,8 @@ alias cmtBuildAndroid="git commit --allow-empty -m 'do /androidonly' && git push
 alias cmtBuildIos="git commit --allow-empty -m 'do /ios' && git push"
 alias cmtBuild="git commit --allow-empty -m 'do /androidonly /ios' && git push"
 alias cmeta="cmt -a 'commit reoccurring meta files'"
+alias gabort="git merge --abort"
+alias glog="git log HEAD...develop --source -- $"
 
 alias chp="git fetch origin cherrypick:cherrypick && git checkout cherrypick"
 alias chpp="git fetch origin cherrypickpendingmerge:cherrypickpendingmerge && git checkout cherrypickpendingmerge"
