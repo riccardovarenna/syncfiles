@@ -1,5 +1,6 @@
 #!/bin/sh
 
+git fetch origin --prune
 git fetch
 
 branches=$(git branch | grep "[^\*] ")
@@ -14,4 +15,3 @@ do
 done
 
 git gc --quiet --prune=now
-git fetch origin --prune

@@ -53,8 +53,9 @@ alias cmeta="cmt -a 'commit reoccurring meta files'"
 alias gabort="git merge --abort"
 alias glog="git log HEAD...develop --source -- $"
 
-alias chp="git fetch origin cherrypick:cherrypick && git checkout cherrypick"
-alias chpp="git fetch origin cherrypickpendingmerge:cherrypickpendingmerge && git checkout cherrypickpendingmerge"
+alias chcp="git fetch origin cherrypick:cherrypick && git checkout cherrypick"
+alias chd="git fetch origin develop:develop && git checkout develop"
+alias chcpp="git fetch origin cherrypick_pending_merge:cherrypick_pending_merge && git checkout cherrypick_pending_merge"
 
 alias gd=gitd.sh # "*" "/*" $*
 alias gda="gd add"
@@ -72,7 +73,7 @@ alias swf=swf.sh # git checkout "feature/rico/$1"
 alias swh=swh.sh # git checkout "hotfix/rico/$1"
 
 alias gitInit=gitInit.sh
-alias gitDelete='git branch | grep -v "rico\|cherrypick\|cherrypick\|develop\|beta_local\|staging\|staging_hotfix\|staging_server_hotfix\|production" | xargs git branch -D'
+alias gitDelete='git branch | grep -v "rico\|cherrypick\|cherrypick\|develop\|beta\|staging\|staging_hotfix\|staging_server_hotfix\|production" | xargs git branch -D'
 # delete remove branches for reference
 # git branch -r | grep rico | grep -v "12\|13\|14\|bulkbutton\|purchases" | grep -oP "(?<=origin\/).*" | xargs git push origin --delete --dry-run
 alias logOldBranches=log_branches_older_than.sh
