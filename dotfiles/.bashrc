@@ -99,7 +99,9 @@ alias purchasegen='python ".\syncfiles\projects\codegen\runner.py" -s'
 alias copydoom='~/syncfiles/copydoomconfig.bat'
 
 alias deltmp='C:/ClashOfStreamers/Tools/deltmp/deltmp.bat'
+alias cos="cd C:/ClashOfStreamers"
 
+alias cr="code_review.sh $1 $2"
 function cld {
     git clipdev "origin/$1"
 }
