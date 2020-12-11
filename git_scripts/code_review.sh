@@ -6,6 +6,8 @@
 
 LC_ALL=en_US.utf8
 
+git branch -D tmp/review-branch
+
 [ -n "$1" ] || (printf "provide the last rev you reviewed as first arg\n" && exit 1) || exit 1
 untracked=$(git status -zs | grep "??")
 [ -z "$untracked" ] || (printf "clean untracked files first\n" && exit 1) || exit 1
