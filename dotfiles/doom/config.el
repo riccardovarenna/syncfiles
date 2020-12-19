@@ -79,7 +79,7 @@
           ("HOLD" . +org-todo-onhold)
           ("WAIT" . +org-todo-onhold)))
   (setq org-tag-alist
-        '(("emacs" . ?e) ("bachir" . ?b) ("jan" . ?j) ("cedric" . ?c) ("nolan" . ?n)))
+        '(("check_with_people" . ?c) ("review_morning" . ?m) ("review_evening" . ?e) ("sports" . ?s) ("other" . ?o)))
   (setq org-log-into-drawer t)
   (setq org-agenda-show-future-repeats nil)
 )
@@ -102,11 +102,47 @@
 ;;       (find-file-noselect "~/org/todo.org")
 ;;       (save-buffer)))
 
-;(use-package! org-super-agenda
-; :after org-agenda
-; :config
-; (setq org-super-agenda-groups '((:auto-dir-name t)))
-; (org-super-agenda-mode))
+;;https://github.com/alphapapa/org-super-agenda
+;;https://github.com/alphapapa/org-super-agenda/blob/master/examples.org
+
+;; (after! evil-org-agenda-mode-map
+;;   (setq org-super-agenda-header-map (copy-keymap evil-org-agenda-mode-map)) ;;use evil map in super agenda
+;; )
+(map! :map org-super-agenda-header-map
+        "j" #'org-agenda-next-line
+        "k" #'org-agenda-previous-line
+        :map org-agenda-keymap
+        "k" #'org-agenda-previous-line
+        "j" #'org-agenda-next-line
+)
+
+(use-package! org-super-agenda
+        :after org-agenda
+        :config
+        (setq org-super-agenda-groups '(
+                                ;;(:auto-tags t)
+                                (:name "deadlines"
+                                 :order 0
+                                 :deadline t)
+                                (:name "review morning"
+                                 :order 1
+                                 :tag "review_morning")
+                                (:name "check with people"
+                                 :order 2
+                                 :tag "check_with_people")
+                                (:name "sports"
+                                 :order 3
+                                 :tag "sports")
+                                (:name "review evening"
+                                 :order 4
+                                 :tag "review_evening")
+                                (:name "other"
+                                 :order 5
+                                 :tag "other")
+                                )
+        )
+        (org-super-agenda-mode)
+)
 
 (setq calendar-latitude 51.7)
 (setq calendar-longitude 14.6)
