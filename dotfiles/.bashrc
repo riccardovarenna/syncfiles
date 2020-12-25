@@ -54,9 +54,10 @@ alias gabort="git merge --abort"
 alias glog="git log HEAD...develop --source -- $"
 
 alias chcp="git fetch origin cherrypick:cherrypick && git checkout cherrypick"
-alias chd="git fetch origin develop:develop && git checkout develop"
+alias chdev="git fetch origin develop:develop && git checkout develop"
 alias chcppm="git fetch origin cherrypick_pending_merge:cherrypick_pending_merge && git checkout cherrypick_pending_merge"
-alias chb="git fetch origin beta:beta && git checkout beta"
+alias chbeta="git fetch origin beta:beta && git checkout beta"
+alias chbugs="git fetch origin feature/rico/bugs:feature/rico/bugs && git checkout feature/rico/bugs"
 
 alias gd=gitd.sh # "*" "/*" $*
 alias gda="gd add"
@@ -103,6 +104,7 @@ alias deltmp='C:/ClashOfStreamers/Tools/deltmp/deltmp.bat'
 alias cos="cd C:/ClashOfStreamers"
 
 alias cr="code_review.sh $1 $2"
+alias rc="review_commit.sh $1 $2 $3 $4"
 function cld {
     git clipdev "origin/$1"
 }
