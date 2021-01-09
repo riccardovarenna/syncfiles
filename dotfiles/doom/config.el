@@ -11,10 +11,6 @@
 (map! :leader :desc "set timer" "tt" #'org-timer-set-timer)
 (map! :leader :desc "open all links" "oal" #'link-hint-open-all-links)
 (map! :leader :desc "open all links" "ol" #'org-agenda-open-link)
-;;(map! :localleader :desc "sort" "s" #'org-sort)
-
-;(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-;(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
 (setq confirm-kill-emacs nil)
 
@@ -59,12 +55,34 @@
            "* %U\n%?" :prepend t)
           ("t" "todo" entry
            (file+headline +org-capture-todo-file "inbox")
-           "* TODO %?")
+           "* TODO %?\n:PROPERTIES:\n:CREATED:  %U\n:END:")
           ("c" "check with everyone" entry
            (file+headline +org-capture-todo-file "check with everyone")
            "* TODO %? [/]\n- [ ] Adan\n- [ ] Axel\n- [ ] Ben\n- [ ] Brian\n- [ ] Igor\n- [ ] Jakob\n- [ ] Konrad\n- [ ] Leon\n- [ ] Nikita\n- [ ] Oskar\n- [ ] Rasmus\n- [ ] Rowan\n- [ ] Sebastian\n- [ ] Xan")
           )
         )
+
+  (setq org-roam-capture-templates
+        '(("d" "default" plain (function org-roam--capture-get-point)
+                "%?"
+                :file-name "${title}" ;old default "%<%Y%m%d%H%M%S>-${slug}"
+                :head "#+title: ${title}\n"
+                :unnarrowed t)
+          ("b" "book" plain (function org-roam--capture-get-point)
+                :file-name "books/${title}"
+                :head "#+title: ${title}\n* Author\n%?\n* Rating\n* The book in 3 sentences\n1."
+                :unnarrowed t)
+          ("g" "goal" plain (function org-roam--capture-get-point)
+                :file-name "goal/${title}"
+                :head "#+title: ${title}\n* Dream\n%?\n* Why\n* Smart Goal\n* What is the habit to achieve this\n* How surprised would I be if I fail\n* Top 3 Reasons for failure\n1.\n* Who can help\n* How can I stack the deck to succeed\n* action [/]\n- [ ] "
+                :unnarrowed t)
+          ("o" "OKRs" plain (function org-roam--capture-get-point)
+                :file-name "okrs/${title}"
+                :head "#+title: ${title}\n* Objective\n%?\n* Key Results\n1."
+                :unnarrowed t)
+        )
+  )
+
   (setq org-todo-keywords
         '((sequence
            "TODO(t!)"       ; A task that needs doing & is ready to do
@@ -80,7 +98,7 @@
           ("HOLD" . +org-todo-onhold)
           ("WAIT" . +org-todo-onhold)))
   (setq org-tag-alist
-        '(("check_with_people" . ?c) ("review_morning" . ?m) ("review_evening" . ?e) ("sports" . ?s) ("other" . ?o)))
+        '(("check_with_people" . ?c) ("review_evening" . ?e) ("family" . ?f) ("health" . ?h) ("programming" . ?p) ("review_morning" . ?m)))
   (setq org-log-into-drawer t)
   (setq org-agenda-show-future-repeats nil)
   ;(setq org-superstar-headline-bullets-list '("Ⅰ" "Ⅱ" "Ⅲ" "Ⅳ" "Ⅴ" "Ⅵ" "Ⅶ" "Ⅷ" "Ⅸ" "Ⅹ"))
@@ -126,28 +144,38 @@
                                 (:name "deadlines"
                                  :order 0
                                  :deadline t)
-                                (:name "review morning"
+                                (:name "family"
                                  :order 1
-                                 :tag "review_morning")
-                                (:name "check with people"
+                                 :tag "family")
+                                (:name "review morning"
                                  :order 2
-                                 :tag "check_with_people")
-                                (:name "sports"
+                                 :tag "review_morning")
+                                (:name "health"
                                  :order 3
-                                 :tag "sports")
-                                (:name "review evening"
+                                 :tag "health")
+                                (:name "check with people"
                                  :order 4
-                                 :tag "review_evening")
-                                (:name "other"
+                                 :tag "check_with_people")
+                                (:name "review evening"
                                  :order 5
-                                 :tag "other")
+                                 :tag "review_evening")
+                                (:name "programming"
+                                 :order 6
+                                 :tag "programming")
                                 )
         )
+        (setq org-agenda-scheduled-leaders '("" "Sched.%2dx: "))
+        (setq org-agenda-hide-tags-regexp ".*")
+        (setq org-agenda-prefix-format "  %t %s")
         (org-super-agenda-mode)
 )
 
+(setq org-roam-directory "~/org/roam")
+
+
 (setq calendar-latitude 51.7)
 (setq calendar-longitude 14.6)
+
 (map! :i "C-i" #'flyspell-auto-correct-word)
 
 (defun save-all ()
@@ -159,7 +187,6 @@
 (setq ispell-program-name "aspell")
 
 (setq ispell-personal-dictionary "C:\\Users\\Riccardo\\.aspell.en.pws")
-;;(setq spell-fu-directory "C:\\msys64\\mingw64\\lib\\aspell-0.60")
 
 (defun my-save-word ()
         (interactive)
@@ -209,16 +236,6 @@
 ;;   (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
 ;;   (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent))
 
-
-
-
-
-
-
-
-
-
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Riccardo Varenna"
@@ -234,12 +251,18 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 13))
+(setq doom-font (font-spec :family "Iosevka" :size 14)
+      doom-big-font (font-spec :family "Iosevka" :size 20)
+      doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size 12)
+      doom-font-increment 1)
+
+(setq doom-theme 'doom-nebula
+      fancy-splash-image (concat doom-private-dir "themes/nebula.png"))
+;;(setq doom-font (font-spec :family "Fira Code" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -266,17 +289,76 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq elfeed-feeds
+   '("https://feeds.simplecast.com/wgl4xEgL"
+     "https://blog.jetbrains.com"
+     "https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q"
+     "https://www.youtube.com/playlist?list=UUxkMDXQ5qzYOgXPRnOBrp1w"
+     "https://www.youtube.com/feeds/videos.xml?channel_id=UCiSC9gerE3Ql5Xt-Z51OD2w"
+     "https://www.youtube.com/feeds/videos.xml?channel_id=UC-9C9d1qDDzA2jdH53vSIuA"
+     "https://www.youtube.com/feeds/videos.xml?channel_id=UCMsNS10PzxzEayT7UHS4p6g"
+     "https://www.youtube.com/feeds/videos.xml?channel_id=UC8THb_fnOptyVgpi3xuCd-A"
+     "https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA"
+     "https://www.youtube.com/feeds/videos.xml?channel_id=UCkjsXZlc-5PyW5xAPlUmw3w"
+     "https://www.youtube.com/feeds/videos.xml?channel_id=UC4rZq6S7sV6gljt_4vjdXIw"
+     "https://www.youtube.com/feeds/videos.xml?channel_id=UCtXuWXsd7TYXwX2ZNLXfojg"
+     "https://www.reddit.com/r/emacs/.rss"
+     "https://www.reddit.com/r/orgmode/.rss"
+     "https://www.techmeme.com/feed.xml"
+     "https://hnrss.org/frontpage"
+     "http://feeds.wnyc.org/moreperfect"
+     "http://feeds.feedburner.com/JupiterBroadcasting"
+     "http://feeds.feedburner.com/DarknetDiaries"
+     "http://ubuntupodcast.org/feed/podcast"
+     "http://podcast.theschmidtshow.com/rss"
+     "https://feeds.megaphone.fm/KM4602122913"
+     "http://www.jupiterbroadcasting.com/feeds/unfilterMP3.xml"
+     "https://feeds.hackablepodcast.com/hackable"
+     "https://pinecast.com/feed/emacscast"
+     "http://feeds.wnyc.org/radiolab"
+     "http://freecodecamp.libsyn.com/rss"
+     "https://thenew.show/feed/podcast"
+     "http://criticalrolepodcast.geekandsundry.com/feed.xml"
+     "http://feeds.soundcloud.com/users/soundcloud:users:265435079/sounds.rss"
+     "http://feeds.nightvalepresents.com/welcometonightvalepodcast"
+     "http://feed.nashownotes.com/rss.xml"
+     "http://feeds.podtrac.com/tBPkjrcL0_m0"
+     "http://latenightlinux.com/feed/mp3"
+     "http://feeds.feedburner.com/80000HoursPodcast"
+     "https://feeds.pacific-content.com/commandlineheroes"
+     "http://feeds.podtrac.com/q8s8ba9YtM6r"
+     "http://feeds.feedburner.com/dancarlin/history?format=xml"
+     "http://feeds.megaphone.fm/PNP1207584390"
+     "https://feeds.megaphone.fm/futureperfect"
+     "http://rss.acast.com/intelligencesquared"
+     "http://feeds.feedburner.com/ProgrammingThrowdown"
+     "https://www.reddit.com/r/worldnews/.rss"))
+
+;; (after! elfeed
+;;         (defun my-elfeed-tag-sort (a b)
+;;                 (let* ((a-tags (format "%s" (elfeed-entry-tags a)))
+;;                         (b-tags (format "%s" (elfeed-entry-tags b))))
+;;                 (if (string= a-tags b-tags)
+;;                         (< (elfeed-entry-date b) (elfeed-entry-date a)))
+;;                 (string< a-tags b-tags)))
+
+;;         (setq elfeed-search-sort-function #'my-elfeed-tag-sort)
+;; )
+
+(defvar elfeed-default-filter "@2-week-old +unread ")
+(setq-default elfeed-search-filter elfeed-default-filter)
+
+(setq ispell-personal-dictionary "c:/Users/Riccardo/.aspell.en.pws")
+(setq org-show-notification-timeout 30)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
 
- '(ispell-personal-dictionary "c:/Users/Riccardo/.aspell.en.pws")
- '(org-show-notification-timeout 30)
-
- '(elfeed-feeds
-   '("https://feeds.simplecast.com/wgl4xEgL" "https://blog.jetbrains.com" "https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q" "https://www.youtube.com/playlist?list=UUxkMDXQ5qzYOgXPRnOBrp1w" "https://www.youtube.com/feeds/videos.xml?channel_id=UCiSC9gerE3Ql5Xt-Z51OD2w" "https://www.youtube.com/feeds/videos.xml?channel_id=UC-9C9d1qDDzA2jdH53vSIuA" "https://www.youtube.com/feeds/videos.xml?channel_id=UCMsNS10PzxzEayT7UHS4p6g" "https://www.youtube.com/feeds/videos.xml?channel_id=UC8THb_fnOptyVgpi3xuCd-A" "https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA" "https://www.youtube.com/feeds/videos.xml?channel_id=UCkjsXZlc-5PyW5xAPlUmw3w" "https://www.youtube.com/feeds/videos.xml?channel_id=UC4rZq6S7sV6gljt_4vjdXIw" "https://www.youtube.com/feeds/videos.xml?channel_id=UCtXuWXsd7TYXwX2ZNLXfojg" "https://www.reddit.com/r/emacs/.rss" "https://www.reddit.com/r/orgmode/.rss" "https://www.techmeme.com/feed.xml" "https://hnrss.org/frontpage" "http://feeds.wnyc.org/moreperfect" "http://feeds.feedburner.com/JupiterBroadcasting" "http://feeds.feedburner.com/DarknetDiaries" "http://ubuntupodcast.org/feed/podcast" "http://podcast.theschmidtshow.com/rss" "https://feeds.megaphone.fm/KM4602122913" "http://www.jupiterbroadcasting.com/feeds/unfilterMP3.xml" "https://feeds.hackablepodcast.com/hackable" "https://pinecast.com/feed/emacscast" "http://feeds.wnyc.org/radiolab" "http://freecodecamp.libsyn.com/rss" "https://thenew.show/feed/podcast" "http://criticalrolepodcast.geekandsundry.com/feed.xml" "http://feeds.soundcloud.com/users/soundcloud:users:265435079/sounds.rss" "http://feeds.nightvalepresents.com/welcometonightvalepodcast" "http://feed.nashownotes.com/rss.xml" "http://feeds.podtrac.com/tBPkjrcL0_m0" "http://latenightlinux.com/feed/mp3" "http://feeds.feedburner.com/80000HoursPodcast" "https://feeds.pacific-content.com/commandlineheroes" "http://feeds.podtrac.com/q8s8ba9YtM6r" "http://feeds.feedburner.com/dancarlin/history?format=xml" "http://feeds.megaphone.fm/PNP1207584390" "https://feeds.megaphone.fm/futureperfect" "http://rss.acast.com/intelligencesquared" "http://feeds.feedburner.com/ProgrammingThrowdown" "https://www.reddit.com/r/worldnews/.rss")))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
