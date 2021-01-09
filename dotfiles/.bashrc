@@ -105,6 +105,8 @@ alias cos="cd C:/ClashOfStreamers"
 
 alias cr="code_review.sh $1 $2"
 alias rc="review_commit.sh $1 $2 $3 $4"
+alias mbr="merged_branch_review.sh $1"
+
 function cld {
     git clipdev "origin/$1"
 }

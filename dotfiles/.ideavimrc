@@ -38,6 +38,7 @@ map gc :action CommentByLineComment<cr>
 map gh :action ShowErrorDescription<cr>
 map go :action QuickImplementations<cr>
 map gs :action RiderShowIncomingCalls<cr>
+map gq :action QuickJavaDoc<cr>
 
 
 "***search***
