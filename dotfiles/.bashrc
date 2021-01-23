@@ -111,6 +111,7 @@ function cld {
     git clipdev "origin/$1"
 }
 
+#is my commit $1 in the commit they tested $2
 #$1<maybe-ancestor-commit> $2<descendant-commit>
 #$1 parent $2 child
 function isAncestor {
