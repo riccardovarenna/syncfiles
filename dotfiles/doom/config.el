@@ -183,7 +183,7 @@
 
   (setq org-show-notification-timeout 30)
 
-  (add-to-list 'org-modules 'org-checklist)
+  (add-to-list 'org-modules 'org-checklist 'org-habit)
 
   (setq org-capture-templates
         '(
@@ -305,29 +305,34 @@
                                 (:name "deadlines"
                                  :order 0
                                  :deadline t)
-                                (:name "family"
+                                (:name "habits"
                                  :order 1
+                                 :habit t)
+                                (:name "family"
+                                 :order 2
                                  :tag "family")
                                 (:name "review morning"
-                                 :order 2
+                                 :order 3
                                  :tag "review_morning")
                                 (:name "health"
-                                 :order 3
+                                 :order 4
                                  :tag "health")
                                 (:name "check with people"
-                                 :order 4
+                                 :order 5
                                  :tag "check_with_people")
                                 (:name "review evening"
-                                 :order 5
+                                 :order 6
                                  :tag "review_evening")
                                 (:name "programming"
-                                 :order 6
+                                 :order 7
                                  :tag "programming")
                                 )
         )
         (setq org-agenda-scheduled-leaders '("" "Sched.%2dx: "))
         (setq org-agenda-hide-tags-regexp ".*")
         (setq org-agenda-prefix-format "  %t %s")
+        (setq org-habit-show-habits t)
+        (setq org-super-agenda-header-map nil)
         (org-super-agenda-mode)
 )
 
