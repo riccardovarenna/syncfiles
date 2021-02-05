@@ -202,6 +202,8 @@
           ("t" "todo" entry
            (file+headline +org-capture-todo-file "inbox")
            "* TODO %?\n:PROPERTIES:\n:CREATED:  %U\n:END:")
+          ("r" "read" table-line (id "ID-TBL-PAGES-READ") "|%?||" :prepend t :unnarrowed t)
+          ("w" "wpm" table-line (id "ID-TBL-WPM") "|%?||" :prepend t :unnarrowed t)
           )
         )
 
@@ -224,6 +226,8 @@
   (setq org-log-into-drawer t)
   (setq org-agenda-show-future-repeats nil)
   ;(setq org-superstar-headline-bullets-list '("Ⅰ" "Ⅱ" "Ⅲ" "Ⅳ" "Ⅴ" "Ⅵ" "Ⅶ" "Ⅷ" "Ⅸ" "Ⅹ"))
+  ;; (setq org-agenda-window-setup 'other-window)
+  ;; (set-popup-rule! "^\\*Org Agenda" :side 'right)  ; tweak me
 )
 
 
@@ -317,14 +321,17 @@
                                 (:name "health"
                                  :order 4
                                  :tag "health")
-                                (:name "check with people"
+                                (:name "eta"
                                  :order 5
+                                 :tag "eta")
+                                (:name "check with people"
+                                 :order 6
                                  :tag "check_with_people")
                                 (:name "review evening"
-                                 :order 6
+                                 :order 7
                                  :tag "review_evening")
                                 (:name "programming"
-                                 :order 7
+                                 :order 8
                                  :tag "programming")
                                 )
         )
