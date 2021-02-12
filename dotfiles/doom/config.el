@@ -83,6 +83,7 @@
 
         (setq elfeed-feeds
                 '(
+                ("https://feeds.megaphone.fm/sofia-with-an-f" podcast)
                 ("https://feeds.simplecast.com/wgl4xEgL" podcast)
                 ("https://blog.jetbrains.com" news)
                 ("https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q" youtube)
@@ -225,6 +226,7 @@
         '(("check_with_people" . ?c) ("review_evening" . ?e) ("family" . ?f) ("health" . ?h) ("programming" . ?p) ("review_morning" . ?m)))
   (setq org-log-into-drawer t)
   (setq org-agenda-show-future-repeats nil)
+  (setq org-deadline-warning-days 7)
   ;(setq org-superstar-headline-bullets-list '("Ⅰ" "Ⅱ" "Ⅲ" "Ⅳ" "Ⅴ" "Ⅵ" "Ⅶ" "Ⅷ" "Ⅸ" "Ⅹ"))
   ;; (setq org-agenda-window-setup 'other-window)
   ;; (set-popup-rule! "^\\*Org Agenda" :side 'right)  ; tweak me
