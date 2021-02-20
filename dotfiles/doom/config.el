@@ -202,7 +202,7 @@
            "* %U\n** plan [/]\n- [ ] %?" :prepend t)
           ("t" "todo" entry
            (file+headline +org-capture-todo-file "inbox")
-           "* TODO %?\n:PROPERTIES:\n:CREATED:  %U\n:END:")
+           "* TODO [#C] %?\n:PROPERTIES:\n:CREATED:  %U\n:END:")
           ("r" "read" table-line (id "ID-TBL-PAGES-READ") "|%?||" :prepend t :unnarrowed t)
           ("w" "wpm" table-line (id "ID-TBL-WPM") "|%?||" :prepend t :unnarrowed t)
           )
@@ -303,6 +303,10 @@
         "j" #'org-agenda-next-line
 )
 
+(after! org
+  (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕"))
+)
+
 (use-package! org-super-agenda
         :after org-agenda
         :config
@@ -323,26 +327,34 @@
                                 (:name "health"
                                  :order 4
                                  :tag "health")
-                                (:name "eta"
+                                (:name "todo"
                                  :order 5
+                                 :file-path "todo.org")
+                                (:name "eta"
+                                 :order 6
                                  :tag "eta")
                                 (:name "check with people"
-                                 :order 6
+                                 :order 7
                                  :tag "check_with_people")
                                 (:name "review evening"
-                                 :order 7
+                                 :order 8
                                  :tag "review_evening")
                                 (:name "programming"
-                                 :order 8
+                                 :order 9
                                  :tag "programming")
                                 )
         )
         (setq org-agenda-scheduled-leaders '("" "Sched.%2dx: "))
         (setq org-agenda-hide-tags-regexp ".*")
-        (setq org-agenda-prefix-format "  %t %s")
         (setq org-habit-show-habits t)
         (setq org-super-agenda-header-map nil)
         (org-super-agenda-mode)
+        (setq org-agenda-prefix-format
+              '((agenda . " %t %s")
+                (todo . " %?-8t %-25b %s")
+                (tags . " %?-8t %-25b %s")
+                (search . " %?-8t %-25b %s"))
+        )
 )
 
 (setq ispell-program-name "aspell")
