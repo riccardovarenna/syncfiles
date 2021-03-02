@@ -83,6 +83,7 @@
 
         (setq elfeed-feeds
                 '(
+                ("https://feeds.redcircle.com/f3395a08-b5f5-4c1a-96db-87c99341f8a0" podcast)
                 ("https://feeds.megaphone.fm/sofia-with-an-f" podcast)
                 ("https://feeds.simplecast.com/wgl4xEgL" podcast)
                 ("https://blog.jetbrains.com" news)
@@ -227,6 +228,7 @@
   (setq org-log-into-drawer t)
   (setq org-agenda-show-future-repeats nil)
   (setq org-deadline-warning-days 7)
+  ;(setq org-ellipsis "↣")
   ;(setq org-superstar-headline-bullets-list '("Ⅰ" "Ⅱ" "Ⅲ" "Ⅳ" "Ⅴ" "Ⅵ" "Ⅶ" "Ⅷ" "Ⅸ" "Ⅹ"))
   ;; (setq org-agenda-window-setup 'other-window)
   ;; (set-popup-rule! "^\\*Org Agenda" :side 'right)  ; tweak me
