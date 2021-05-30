@@ -85,6 +85,7 @@ map <leader>gc :action Git.CompareWithBranch<cr>
 map <leader>ga :action Annotate<cr>
 map <leader>gr :action Git.ResolveConflicts<cr>
 map <leader>gv :action Compare.Selected<cr>
+map <leader>gh :action Vcs.ShowTabbedFileHistory<cr>
 
 "***file changes
 map <leader>fs :action SaveAll<cr>

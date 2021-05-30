@@ -305,6 +305,7 @@
 
 (after! org
   (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕"))
+  (setq org-agenda-sticky t)
 )
 
 (use-package! org-super-agenda
@@ -317,7 +318,8 @@
                                  :deadline t)
                                 (:name "habits"
                                  :order 1
-                                 :habit t)
+                                 :tag "habit")
+                                 ;;:habit t)
                                 (:name "family"
                                  :order 2
                                  :tag "family")

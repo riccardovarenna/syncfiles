@@ -82,6 +82,8 @@ alias logOldBranches=log_branches_older_than.sh
 alias startserver="START dotnet run --project ../Build/Build StartLocalServer"
 
 alias gdo=runjob.sh
+alias publishlogs="gdo /publishandroid /publishios /publishlogs"
+alias publishprod="gdo /publishandroid /publishios"
 
 alias note='trello add-card -b "Riccardo" -l "Inbox" $1 -p bottom' #using https://travis-ci.org/mheap/trello-cli
 
