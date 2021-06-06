@@ -32,8 +32,8 @@ nnoremap gk k
 "***go***
 map gu :action FindUsages<CR>
 map gi :action ReSharperGotoImplementation<CR>
-map gb :action Back<CR>
-map gf :action Forward<CR>
+map gb <C-o>
+map gf <C-i>
 map gc :action CommentByLineComment<cr>
 map gh :action ShowErrorDescription<cr>
 map go :action QuickImplementations<cr>
