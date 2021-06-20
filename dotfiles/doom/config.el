@@ -16,7 +16,6 @@
 
 (map! :leader :desc "agenda day" "ad" #'org-agenda-day-view)
 (map! :leader :desc "agenda week" "aw" #'org-agenda-week-view)
-(map! :leader :desc "export html" "eh" #'org-pandoc-export-to-html5)
 
 (global-set-key (kbd "M-c") 'shell)
 (global-set-key (kbd "M-n") 'evil-mc-make-and-goto-next-match)

@@ -35,10 +35,10 @@ map gi :action ReSharperGotoImplementation<CR>
 map gb <C-o>
 map gf <C-i>
 map gc :action CommentByLineComment<cr>
-map gh :action ShowErrorDescription<cr>
+"map gh :action ShowErrorDescription<cr>
+map gh :action QuickJavaDoc<cr>
 map go :action QuickImplementations<cr>
 map gs :action RiderShowIncomingCalls<cr>
-map gq :action QuickJavaDoc<cr>
 
 
 "***search***
