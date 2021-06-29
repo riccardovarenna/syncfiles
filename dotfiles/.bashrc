@@ -58,6 +58,7 @@ alias chdev="git fetch origin develop:develop && git checkout develop"
 alias chcppm="git fetch origin cherrypick_pending_merge:cherrypick_pending_merge && git checkout cherrypick_pending_merge"
 alias chbeta="git fetch origin beta:beta && git checkout beta"
 alias chbugs="git fetch origin feature/rico/bugs:feature/rico/bugs && git checkout feature/rico/bugs"
+alias chstaging="git fetch origin staging:staging && git checkout staging"
 
 alias gd=gitd.sh # "*" "/*" $*
 alias gda="gd add"
@@ -82,6 +83,7 @@ alias logOldBranches=log_branches_older_than.sh
 alias startserver="START dotnet run --project ../Build/Build StartLocalServer"
 
 alias gdo=runjob.sh
+alias dostage0="gdo /runPlaymodeTests /testEditor-Uncategorized /analyzers /runPrefabAnalyzers /validateAssets /validatePrefabNames /detectMergeConflicts"
 alias publishlogs="gdo /publishandroid /publishios /publishlogs"
 alias publishprod="gdo /publishandroid /publishios"
 
