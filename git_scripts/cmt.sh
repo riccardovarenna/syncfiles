@@ -4,6 +4,8 @@ message=""
 push=0
 addAll=0
 noEdit=0
+amend=0
+hash=0
 for arg do
     case ${arg} in 
         -p|--push)
@@ -19,6 +21,12 @@ for arg do
         -ne|--no-edit)
             noEdit=1
             ;;
+        -am|--amend)
+            amend=1
+            ;;
+        -h|--hash)
+            hash=1
+            ;;
 		*)
             message=${arg}    
             ;;
@@ -26,16 +34,37 @@ for arg do
     
 done
 
-if [ "$addAll" = "1" ]; then
+one=1
+if [[ $addAll -eq $one ]] 
+then
 	git add .
 fi
 
-if [ "$noEdit" = "1" ]; then
-    git commit --no-edit
+if [[ $noEdit -eq $one ]] 
+then
+    if [[ $amend -eq $one ]] 
+    then
+        git commit --no-edit --amend
+    else
+        git commit --no-edit
+    fi
 else
-    git commit -m "$message"
+    if [[ $amend -eq $one ]] 
+    then
+        git commit --amend
+    else
+        git commit -m "$message"
+    fi
 fi
-    
+
+if [[ $hash -eq $one ]] 
+then
+    commitHash=`git rev-parse --short HEAD`
+    echo "$commitHash" | tr -d '\n' | cb.exe
+    echo "Copied commit hash to clipboard: $commitHash" 
+    git pull
+    git push
+fi
 
 if [[ ${push} > 0 ]]
 then

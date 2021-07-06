@@ -35,8 +35,10 @@ map gi :action ReSharperGotoImplementation<CR>
 map gb <C-o>
 map gf <C-i>
 map gc :action CommentByLineComment<cr>
-"map gh :action ShowErrorDescription<cr>
-map gh :action QuickJavaDoc<cr>
+"go hint
+map gh :action ShowErrorDescription<cr>
+"go info
+map gi :action QuickJavaDoc<cr>
 map go :action QuickImplementations<cr>
 map gs :action RiderShowIncomingCalls<cr>
 
@@ -46,6 +48,7 @@ map <leader>/ :action FindInPath<cr>
 map <leader>ps :action GotoSymbol<cr>
 map <leader>pa :action GotoAction<cr>
 map <leader>pf :action GotoFile<cr>
+map <leader>ff :action Find<cr>
 noremap <leader>pr :action RecentChangedFiles<CR>
 noremap <leader>ph :action ReplaceInPath<CR>
 

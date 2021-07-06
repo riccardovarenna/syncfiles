@@ -79,7 +79,7 @@
  )
 
 (after! elfeed
-    (setq elfeed-enclosure-default-dir "~\\Downloads\\")
+    (setq elfeed-enclosure-default-dir "D:\\play\\")
 
     (setq elfeed-feeds '(("https://feeds.redcircle.com/f3395a08-b5f5-4c1a-96db-87c99341f8a0" podcast)
         ("https://feeds.megaphone.fm/sofia-with-an-f" podcast)
