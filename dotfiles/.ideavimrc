@@ -16,6 +16,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab "expands tab to tabstop spaces
 set linebreak "wrap whole words instead of splitting them in the middle
+set highlightedyank
 
 "don't loose selection when shifting
 xnoremap <  <gv
