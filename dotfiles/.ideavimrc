@@ -100,4 +100,6 @@ map <leader>els :action Tool_External Tools_localserver<cr>
 map <leader>ecp :action Tool_External Tools_codepatcher<cr>
 map <leader>epg :action Tool_External Tools_purchasegen<cr>
 map <leader>ggg :action ActivateProjectToolWindow<cr>
+map <leader>nn :action NewScratchBuffer<cr>
+map <leader>nN :action NewScratchFile<cr>
 vmap = :action ReformatCode<cr>

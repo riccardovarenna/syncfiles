@@ -17,6 +17,13 @@
 (map! :leader :desc "agenda day" "ad" #'org-agenda-day-view)
 (map! :leader :desc "agenda week" "aw" #'org-agenda-week-view)
 
+(map! :leader :desc "exe elfeed update" "eeu" #'elfeed-update)
+(map! :leader :desc "exe elfeed start" "ees" #'elfeed)
+
+(map! :leader :desc "exe profiler start" "eps" #'profiler-start)
+(map! :leader :desc "exe profiler stop" "epS" #'profiler-stop)
+(map! :leader :desc "exe profiler report" "epr" #'profiler-report)
+
 (global-set-key (kbd "M-c") 'shell)
 (global-set-key (kbd "M-n") 'evil-mc-make-and-goto-next-match)
 (global-set-key (kbd "M-N") 'evil-mc-make-cursor-in-visual-selection-beg)
@@ -232,7 +239,14 @@
   ;; (set-popup-rule! "^\\*Org Agenda" :side 'right)  ; tweak me
 )
 
-
+(after! org-superstar
+  (defadvice org-superstar-mode
+    (around
+    my-org-superstar-mode-advice
+    activate)
+    (let ((gc-cons-threshold (* 1024 1024 1024)))
+    ad-do-it))
+)
 
 ;; (defun my/org-refile (file headline &optional arg)
 ;;     "Refile to a specific heading in a file."
