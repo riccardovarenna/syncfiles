@@ -27,6 +27,10 @@ for arg do
         -h|--hash)
             hash=1
             ;;
+        -ah|-ha)
+			addAll=1
+            hash=1
+            ;;
 		*)
             message=${arg}    
             ;;
@@ -60,7 +64,7 @@ fi
 if [[ $hash -eq $one ]] 
 then
     commitHash=`git rev-parse --short HEAD`
-    echo "$commitHash" | tr -d '\n' | cb.exe
+    echo "$commitHash" | tr -d '\n' | clip.exe
     echo "Copied commit hash to clipboard: $commitHash" 
     git pull
     git push

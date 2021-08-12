@@ -1,6 +1,7 @@
 (map! :leader "SPC" #'execute-extended-command)
 (map! :leader :desc "open todo" "ot" (lambda () (interactive) (find-file "~/org/todo.org")))
 (map! :leader :desc "open potential_index" "op" (lambda () (interactive) (find-file "~/vimwiki/potential_index.org")))
+(map! :leader :desc "open relationships" "or" (lambda () (interactive) (find-file "~/org/relationships.org")))
 (map! :leader :desc "search dir" "/" #'counsel-ag)
 (map! :leader :desc "narrow toggle" "on" #'org-toggle-narrow-to-subtree)
 (map! :leader :desc "set timer" "tt" #'org-timer-set-timer)

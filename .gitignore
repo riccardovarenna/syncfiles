@@ -1,5 +1,6 @@
 .idea/
 .tmp.drivedownload/
+.tmp.driveupload/
 AutoClicker.exe
 ahkScript.ahk
 do_nothing_scripts/
