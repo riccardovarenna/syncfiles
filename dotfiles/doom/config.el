@@ -1,7 +1,8 @@
 (map! :leader "SPC" #'execute-extended-command)
 (map! :leader :desc "open todo" "ot" (lambda () (interactive) (find-file "~/org/todo.org")))
-(map! :leader :desc "open potential_index" "op" (lambda () (interactive) (find-file "~/vimwiki/potential_index.org")))
-(map! :leader :desc "open relationships" "or" (lambda () (interactive) (find-file "~/org/relationships.org")))
+(map! :leader :desc "open management" "om" (lambda () (interactive) (find-file "~/org/management.org")))
+(map! :leader :desc "open potential index" "opi" (lambda () (interactive) (find-file "~/vimwiki/potential_index.org")))
+(map! :leader :desc "open personal personal" "opp" (lambda () (interactive) (find-file "~/org/personal.org")))
 (map! :leader :desc "search dir" "/" #'counsel-ag)
 (map! :leader :desc "narrow toggle" "on" #'org-toggle-narrow-to-subtree)
 (map! :leader :desc "set timer" "tt" #'org-timer-set-timer)
@@ -219,6 +220,7 @@
         '((sequence
            "TODO(t!)"       ; A task that needs doing & is ready to do
            "WAIT(w!)"       ; Something external is holding up this task
+           "FOUP(f!)"      ; Needs follow up, already checked once
            "HOLD(h!)"       ; This task is paused/on hold because of me
            "OUTS(o!)"       ; outsource this task
            "|"
@@ -228,6 +230,7 @@
         '(("[-]"  . +org-todo-active)
           ("[?]"  . +org-todo-onhold)
           ("HOLD" . +org-todo-onhold)
+          ("FOUP" . +org-todo-onhold)
           ("WAIT" . +org-todo-onhold)))
   (setq org-tag-alist
         '(("check_with_people" . ?c) ("review_evening" . ?e) ("family" . ?f) ("health" . ?h) ("programming" . ?p) ("review_morning" . ?m)))
